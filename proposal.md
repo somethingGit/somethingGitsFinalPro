@@ -5,11 +5,10 @@ I am planning on making
 ## Needs to have list
 
 - 3d Objects
-- Ability to
-- Thing 3
+- Ability to move with keys WASD
 
 ### Nice to have list
 
-- Thing 1
-- Thing 2
-- Thing 3
+- Images/sounds
+- Shaders
+- Smooth experience
