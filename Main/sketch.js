@@ -1,17 +1,42 @@
-// Project Title
-// Your Name
-// Date
+// Some 3d Game
+// Jason
+// November 18 2022
 //
 // Extra for Experts:
-// - describe what you did to take this project "above and beyond"
+// - I am using 3d object using the renderer Webgl. 
 
+let firstPersonCamera;
+let cameraPan = 0.01;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowHeight, windowWidth, WEBGL);
+  firstPersonCamera = createCamera();
 }
 
 function draw() {
-  background(220);
-  box(15,15);
-  camera(10,0,0,0,0,0);
+  background(200);
+  requestPointerLock();
+  box(100,100,100);
+  square(0, 0, 100);
+  keyDown();
+}
+
+function mouseMoved() {
+  firstPersonCamera.pan(-movedX * 0.001);
+  firstPersonCamera.tilt(movedY * 0.001);
+}
+
+function keyDown() {
+  if(keyIsDown(87)) {
+    firstPersonCamera.move(1,0,0);
+  }
+  else if(keyIsDown(65)) {
+    
+  }
+  else if(keyIsDown(83)) {
+    
+  }
+  else if(keyIsDown(68)) {
+    
+  }
 }

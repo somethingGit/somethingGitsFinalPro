@@ -167,6 +167,8 @@
       "pRotationX": true,
       "pRotationY": true,
       "pRotationZ": true,
+      "movedX": true, 
+      "movedY": true,
       "turnAxis": true,
       "setMoveThreshold": true,
       "setShakeThreshold": true,
@@ -457,7 +459,10 @@
       "collidePolyPoly": true,
       "collidePointTriangle": true,
 
-      "deltaTime": true
+      "deltaTime": true, 
+      
+      "createCamera": true, 
+      "requestPointerLock": true
     }
   }
 }
