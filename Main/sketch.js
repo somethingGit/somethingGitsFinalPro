@@ -7,6 +7,8 @@
 
 let firstPersonCamera;
 let cameraPan = 0.01;
+let chunk = 16;
+let chunkArray = [];
 
 function setup() {
   createCanvas(windowHeight, windowWidth, WEBGL);
@@ -15,28 +17,43 @@ function setup() {
 
 function draw() {
   background(200);
-  requestPointerLock();
   box(100,100,100);
-  square(0, 0, 100);
   keyDown();
 }
 
 function mouseMoved() {
-  firstPersonCamera.pan(-movedX * 0.001);
-  firstPersonCamera.tilt(movedY * 0.001);
+  firstPersonCamera.pan(-movedX * 0.002);
+  firstPersonCamera.tilt(movedY * 0.002);
 }
 
 function keyDown() {
   if(keyIsDown(87)) {
+    firstPersonCamera.move(0,0,-1);
+  }
+  if(keyIsDown(65)) {
+    firstPersonCamera.move(-1,0,0);
+  }
+  if(keyIsDown(83)) {
+    firstPersonCamera.move(0,0,1);
+  }
+  if(keyIsDown(68)) {
     firstPersonCamera.move(1,0,0);
   }
-  else if(keyIsDown(65)) {
-    
+  if(keyIsDown(32)) {
+    firstPersonCamera.move(0,-1,0);
   }
-  else if(keyIsDown(83)) {
-    
+  if(keyIsDown(69)) {
+    firstPersonCamera.move(0,-1,0);
   }
-  else if(keyIsDown(68)) {
-    
+  if(keyIsDown(81)) {
+    firstPersonCamera.move(0,1,0);
   }
+}
+
+function keyPressed() {
+  requestPointerLock();
+}
+
+function mousePressed() {
+  requestPointerLock();  
 }
