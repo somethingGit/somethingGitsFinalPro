@@ -9,15 +9,25 @@ I am planning on making
 - Pan camera with mouse
 - Use of WEBGL
 
-
 ### Nice to have list
 
 - Images/sounds
 - Shaders
 - Smooth experience
-- Import Other Javascript libraries
+- Import My Own Javascript Files To Make It Easy To See What Is Happening
 - Multiplayer game
 
-#### Where to see
+#### Todo List
+
+ - Add a 3d box
+ - Make a Camera with movement
+ - Make multiple boxes
+ - Make a class that makes boxes
+ - Import other files
+ - Save blocks into text/json files
+ - Add a world generator
+ - 
+
+##### Where to see
 
 * https://somethinggit.github.io/somethingGitsFinalPro/Main/
