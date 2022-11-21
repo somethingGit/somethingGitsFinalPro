@@ -13,7 +13,7 @@ class Block {
 const chunkSize = 16;
 let chunkArray = [];
 
-function noiseGeneration() {
+function generateWorld() {
   class Block {
     constructor(x, y, z) {
       this.blockType = "green";

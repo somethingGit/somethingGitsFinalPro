@@ -12,12 +12,10 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(windowHeight, windowWidth, WEBGL);
+  createCanvas(windowWidth, windowHeight, WEBGL);
   firstPersonCamera = createCamera();
-  noiseGeneration();
+  generateWorld();
 }
-
-
 
 function draw() {
   background(200);
@@ -25,4 +23,8 @@ function draw() {
   if(keyIsPressed) {
     keyDown();
   }
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
