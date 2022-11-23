@@ -28,13 +28,13 @@ function keyDown() {
     if(keyIsDown(69)) firstPersonCamera.move(0,-1,0);
     if(keyIsDown(81)) firstPersonCamera.move(0,1,0);
 
-  // if(keyIsDown(87)) cameraPositionZ--;
-  // if(keyIsDown(65)) cameraPositionX--;
-  // if(keyIsDown(83)) cameraPositionZ++;
-  // if(keyIsDown(68)) cameraPositionX++;
-  // if(keyIsDown(32)) cameraPositionY--;
-  // if(keyIsDown(69)) cameraPositionY--;
-  // if(keyIsDown(81)) cameraPositionY++;
+    // if(keyIsDown(87)) cameraPositionZ--;
+    // if(keyIsDown(65)) cameraPositionX--;
+    // if(keyIsDown(83)) cameraPositionZ++;
+    // if(keyIsDown(68)) cameraPositionX++;
+    // if(keyIsDown(32)) cameraPositionY--;
+    // if(keyIsDown(69)) cameraPositionY--;
+    // if(keyIsDown(81)) cameraPositionY++;
   
   // firstPersonCamera.setPosition(cameraPositionX, cameraPositionY, cameraPositionZ);
   }

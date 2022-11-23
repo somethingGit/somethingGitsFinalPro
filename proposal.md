@@ -15,7 +15,7 @@ I am planning on making
 - Shaders
 - Smooth experience
 - Import My Own Javascript Files To Make It Easy To See What Is Happening
-- Multiplayer game
+- Multiplayer game Socket.io
 
 #### Todo List
 
