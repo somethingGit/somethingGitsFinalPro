@@ -1,6 +1,6 @@
 # Proposal
 
-I am planning on making 
+I am planning on making a Minecraft like game. 
 
 ## Needs to have list
 
@@ -9,15 +9,26 @@ I am planning on making
 - Pan camera with mouse
 - Use of WEBGL
 
-### Nice to have list
+### Overworld map
+- 3d noise terrain
+- character moving around with WASD, camera with mouse-pointer, fov change
+- breaks and place block
+
+### HUD/ GUI
+- Inventory
+- Arrow/direction
+- Start/Dead (or creative mode)
+
+
+## Nice to have list
 
 - Images/sounds
 - Shaders
 - Smooth experience
 - Import My Own Javascript Files To Make It Easy To See What Is Happening
-- Multiplayer game Socket.io
+- Multiplayer game with Socket.io
 
-#### Todo List
+## Todo List
 
  - Add a 3d box
  - Make a Camera with movement
