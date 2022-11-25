@@ -20,13 +20,13 @@ function mouseMoved() {
   
 function keyDown() {
   if(focused) {
-    if(keyIsDown(87)) firstPersonCamera.move(0,0,-1);
-    if(keyIsDown(65)) firstPersonCamera.move(-1,0,0);
-    if(keyIsDown(83)) firstPersonCamera.move(0,0,1);
-    if(keyIsDown(68)) firstPersonCamera.move(1,0,0);
-    if(keyIsDown(32)) firstPersonCamera.move(0,-1,0);
-    if(keyIsDown(69)) firstPersonCamera.move(0,-1,0);
-    if(keyIsDown(81)) firstPersonCamera.move(0,1,0);
+    if(keyIsDown(87)) firstPersonCamera.move(0,0,-1); // key W
+    if(keyIsDown(65)) firstPersonCamera.move(-1,0,0); // key A
+    if(keyIsDown(83)) firstPersonCamera.move(0,0,1); // key S
+    if(keyIsDown(68)) firstPersonCamera.move(1,0,0); // key D
+    if(keyIsDown(32)) firstPersonCamera.move(0,-1,0); // space
+    if(keyIsDown(69)) firstPersonCamera.move(0,-1,0); //key E
+    if(keyIsDown(81)) firstPersonCamera.move(0,1,0); // Q
 
     // if(keyIsDown(87)) cameraPositionZ--;
     // if(keyIsDown(65)) cameraPositionX--;
