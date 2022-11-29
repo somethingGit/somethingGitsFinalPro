@@ -17,12 +17,10 @@ I am planning on making a Minecraft like game.
 ### HUD/ GUI
 - Inventory
 - Arrow/direction
-- Start/Dead (or creative mode)
 
 
 ## Nice to have list
-
-- Images/sounds
+- Start/Dead (or creative mode)
 - Shaders
 - Smooth experience
 - Import My Own Javascript Files To Make It Easy To See What Is Happening
@@ -35,7 +33,7 @@ I am planning on making a Minecraft like game.
  - Make multiple boxes
  - Make a class that makes boxes
  - Import other files
- - Save blocks into text/json files
+ - Save blocks into text/json files (3d array box)
  - Add a world generator
  - 
 
