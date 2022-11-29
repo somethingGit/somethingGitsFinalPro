@@ -15,14 +15,15 @@ function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
   firstPersonCamera = createCamera();
   generateWorld();
+  console.log(chunkArray);
 }
 
 function draw() {
   background(200);
-  box(sideLength,sideLength,sideLength);
-  if(keyIsPressed) {
-    keyDown();
-  }
+  drawWorld();
+  // if(keyIsPressed) {
+  //   keyDown();
+  // }
 }
 
 function windowResized() {
