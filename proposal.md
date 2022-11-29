@@ -17,6 +17,7 @@ I am planning on making a Minecraft like game.
 ### HUD/ GUI
 - Inventory
 - Arrow/direction
+- Images/sounds
 
 
 ## Nice to have list
