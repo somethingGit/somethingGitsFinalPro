@@ -1,3 +1,4 @@
+/* eslint-disable brace-style */
 // /* eslint-disable curly */
 let cameraTilt = 0;
 let firstPersonCamera;
@@ -35,31 +36,34 @@ let mouseSensitivity = 0.002;
 //   //   // if(keyIsDown(32)) cameraPositionY--;
 //   //   // if(keyIsDown(69)) cameraPositionY--;
 //   //   // if(keyIsDown(81)) cameraPositionY++;
-  
+
 //   // // firstPersonCamera.setPosition(cameraPositionX, cameraPositionY, cameraPositionZ);
 //   // }
 // }
 
 function setCam() {
   firstPersonCamera = createRoverCam();
-  firstPersonCamera.usePointerLock();
-  firstPersonCamera.setState({
-    position : [0, 10, 0], 
-    rotation: [0,0,0],
-    sensitivity: 0.05,
-    speed: 0.1
-  });
-  firstPersonCamera.enableControl = true;
   firstPersonCamera.setActive(true);
+  firstPersonCamera.setState = {
+    active: true,
+    enableControl: false,
+    position: [-400,50,0],
+    rotation: [0,0.1,0],
+    offset: [0,20],
+    fov: 1,
+    speed: 0.1,
+    sensitivity: 0.02
+  };
+  firstPersonCamera.controller();
 }
   
-// function keyPressed() {
-//   requestPointerLock();
-// }
+function keyPressed() {
+  requestPointerLock();
+}
   
-// function mousePressed() {
-//   requestPointerLock();  
-// }
+function mousePressed() {
+  requestPointerLock();  
+}
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight, WEBGL);
