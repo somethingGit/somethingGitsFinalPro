@@ -2,7 +2,7 @@ let sideLength = 50;
 
 class Block {
   constructor(x,y,z) {
-    this.blockType = "white";
+    this.blockType = "green";
     this.x = x;
     this.y = y;
     this.z = z;
@@ -10,7 +10,13 @@ class Block {
   }
   display() {
     fill(this.blockType);
-    translate(this.x*sideLength, this.z*sideLength, this.y*sideLength);
+    for(let i = 0; i < chunkArray.length; i++) {
+      for(let j = 0; j < chunkArray[i].length; j++) {
+        for(let k = 0; k < chunkArray[i][j].length; k++) {
+          translate(chunkArray[i][j][k].x,chunkArray[i][j][k].y,chunkArray[i][j][k].z);
+        }
+      }
+    }
     box(sideLength,sideLength,sideLength);
   }
 }
