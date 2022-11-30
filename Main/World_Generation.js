@@ -13,7 +13,7 @@ class Block {
     for(let i = 0; i < chunkArray.length; i++) {
       for(let j = 0; j < chunkArray[i].length; j++) {
         for(let k = 0; k < chunkArray[i][j].length; k++) {
-          translate(chunkArray[i][j].x,chunkArray[i][j].y,chunkArray[i][j].z);
+          translate(chunkArray[i][j][k].x,chunkArray[i][j][k].y,chunkArray[i][j][k].z);
         }
       }
     }
