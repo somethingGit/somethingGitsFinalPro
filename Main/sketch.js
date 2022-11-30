@@ -11,7 +11,7 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
-  firstPersonCamera = createCamera();
+  setCam();
   generateWorld();
   console.log(chunkArray);
 }
@@ -19,9 +19,7 @@ function setup() {
 function draw() {
   background(200);
   drawWorld();
-  if(keyIsPressed) {
-    keyDown();
-  }
+  
 }
 
 function windowResized() {
