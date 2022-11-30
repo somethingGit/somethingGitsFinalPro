@@ -43,20 +43,15 @@ let mouseSensitivity = 0.002;
 
 function setCam() {
   firstPersonCamera = createRoverCam();
-  firstPersonCamera.setActive(true);
-  firstPersonCamera.setState = {
-    active: true,
-    enableControl: false,
-    position: [-400,50,0],
-    rotation: [0,0.1,0],
-    offset: [0,20],
-    fov: 1,
-    speed: 0.1,
-    sensitivity: 0.02
-  };
-  firstPersonCamera.controller();
+  firstPersonCamera.usePointerLock(); 
+  firstPersonCamera.setState({   
+    position: [0,0,0],
+    rotation: [0,0,0],
+    sensitivity: 0.1,
+    speed: 0.5
+  });
 }
-  
+
 function keyPressed() {
   requestPointerLock();
 }
