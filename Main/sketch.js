@@ -19,7 +19,7 @@ function setup() {
 function draw() {
   background(200);
   drawWorld();
-  
+  line(windowWidth / 2, windowHeight - windowHeight / 20, windowWidth / 2, windowHeight + windowHeight / 20);
 }
 
 function windowResized() {
