@@ -5,8 +5,6 @@
 // Extra for Experts:
 // - I am using 3d object using the renderer Webgl. 
 
-let sideLength = 100;
-
 function preload() {
   
 }
@@ -21,9 +19,9 @@ function setup() {
 function draw() {
   background(200);
   drawWorld();
-  // if(keyIsPressed) {
-  //   keyDown();
-  // }
+  if(keyIsPressed) {
+    keyDown();
+  }
 }
 
 function windowResized() {

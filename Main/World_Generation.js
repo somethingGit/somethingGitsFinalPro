@@ -1,3 +1,5 @@
+let sideLength = 50;
+
 class Block {
   constructor(x,y,z) {
     this.blockType = "white";
@@ -8,7 +10,7 @@ class Block {
   }
   display() {
     fill(this.blockType);
-    translate(this.x, this.y, this.z);
+    translate(this.x*sideLength, this.z*sideLength, this.y*sideLength);
     box(sideLength,sideLength,sideLength);
   }
 }
@@ -23,7 +25,7 @@ const chunkSize = 16;
 let chunkArray = [];
 
 function generateWorld() {
-  addChunk(30);
+  chunkArray = addChunk(3);
 }
   
 function addChunk(worldHeight) {
@@ -34,10 +36,11 @@ function addChunk(worldHeight) {
       newChunk[x].push([]);
       for(let y = 0; y < worldHeight; y++) {
         let block = new Block(x,z,y);
-        chunkArray[x][z].push(block);
+        newChunk[x][z].push(block);
       }
     }
-  } 
+  }
+  return newChunk; 
 } 
 
 function drawWorld() {
