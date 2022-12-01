@@ -6,13 +6,12 @@
 // - I am using 3d object using the renderer Webgl. 
 
 function preload() {
-  
+  generateWorld();
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
   setCam();
-  generateWorld();
   console.log(chunkArray);
 }
 

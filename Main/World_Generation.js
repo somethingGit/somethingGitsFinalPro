@@ -8,16 +8,11 @@ class Block {
     this.z = z;
     this.boxLength = sideLength;
   }
-  display() {
+  display(i,j,k) {
     fill(this.blockType);
-    for(let i = 0; i < chunkArray.length; i++) {
-      for(let j = 0; j < chunkArray[i].length; j++) {
-        for(let k = 0; k < chunkArray[i][j].length; k++) {
-          translate(chunkArray[i][j][k].x,chunkArray[i][j][k].y,chunkArray[i][j][k].z);
-        }
-      }
-    }
+    translate(chunkArray[i][j][k].x*sideLength,chunkArray[i][j][k].z*sideLength,chunkArray[i][j][k].y*sideLength);
     box(sideLength,sideLength,sideLength);
+    translate(chunkArray[i][j][k].x*sideLength*-1,chunkArray[i][j][k].z*sideLength*-1,chunkArray[i][j][k].y*sideLength*-1);
   }
 }
 
@@ -53,7 +48,7 @@ function drawWorld() {
   for(let i = 0; i < chunkArray.length; i++) {
     for(let j = 0; j < chunkArray[i].length; j++) {
       for(let k = 0; k < chunkArray[i][j].length; k++) {
-        chunkArray[i][j][k].display();
+        chunkArray[i][j][k].display(i,j,k);
       }
     }
   }
