@@ -11,7 +11,7 @@ function setCam() {
   firstPersonCamera = createRoverCam();
   firstPersonCamera.usePointerLock(); 
   firstPersonCamera.setState({   
-    position: [0,0,0],
+    position: [0,-100,0],
     rotation: [0,0,0],
     sensitivity: 0.1,
     speed: 0.5
@@ -20,6 +20,12 @@ function setCam() {
 
 function keyPressed() {
   requestPointerLock();
+  if(keyIsDown(16)) {
+    firstPersonCamera.setState({speed: 1});
+  }
+  else {
+    firstPersonCamera.setState({speed: 0.5});
+  }
 }
   
 function mousePressed() {
@@ -27,5 +33,5 @@ function mousePressed() {
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight, WEBGL);
+  resizeCanvas(windowWidth, windowHeight);
 }

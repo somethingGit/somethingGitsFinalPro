@@ -26,7 +26,7 @@ const chunkSize = 16;
 let chunkArray = [];
 
 function generateWorld() {
-  chunkArray = addChunk(3);
+  chunkArray = addChunk(9);
 }
   
 function addChunk(worldHeight) {
