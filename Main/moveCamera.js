@@ -14,17 +14,17 @@ function setCam() {
     position: [0,-100,0],
     rotation: [0,0,0],
     sensitivity: 0.1,
-    speed: 0.5
+    speed: 1
   });
 }
 
 function keyPressed() {
   requestPointerLock();
   if(keyIsDown(16)) {
-    firstPersonCamera.setState({speed: 1});
+    firstPersonCamera.setState({speed: 2});
   }
   else {
-    firstPersonCamera.setState({speed: 0.5});
+    firstPersonCamera.setState({speed: 1});
   }
 }
   
