@@ -6,6 +6,7 @@ let cameraPositionX = 0;
 let cameraPositionY = 0; 
 let cameraPositionZ = 80;
 let mouseSensitivity = 0.002;
+let playerPosition = [0,-100,0];
 
 function setCam() {
   firstPersonCamera = createRoverCam();
@@ -25,6 +26,9 @@ function keyPressed() {
   }
   else {
     firstPersonCamera.setState({speed: 1});
+  }
+  if(keyIsDown(32) && playerOnGround) {
+    playerOnGround = !playerOnGround;
   }
 }
   
