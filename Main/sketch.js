@@ -1,11 +1,12 @@
 // Some 3d Game
-// Jason
+// Jason and Khanh Vinh
 // November 18 2022
 //
 // Extra for Experts:
 // - I am using 3d object using the renderer Webgl. 
 
 function preload() {
+  noiseSeed(10);
   generateWorld();
 }
 
