@@ -6,7 +6,9 @@ let cameraPositionX = 0;
 let cameraPositionY = 0; 
 let cameraPositionZ = 80;
 let mouseSensitivity = 0.002;
-let playerPosition = [0,-100,0];
+let playerPosition;
+let playerOnGround = false;
+let delta = 0; 
 
 function setCam() {
   firstPersonCamera = createRoverCam();
@@ -17,6 +19,7 @@ function setCam() {
     sensitivity: 0.1,
     speed: 1
   });
+  playerPosition = firstPersonCamera.setState.position;
 }
 
 function keyPressed() {
@@ -29,9 +32,14 @@ function keyPressed() {
   }
   if(keyIsDown(32) && playerOnGround) {
     playerOnGround = !playerOnGround;
+    delta = 5; 
   }
 }
-  
+
+function movePlayer() {
+  if(delta > 0 && !playerOnGround) {firstPersonCamera.setState.position[1] -= delta;}
+}
+
 function mousePressed() {
   requestPointerLock();  
 }
