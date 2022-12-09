@@ -31,6 +31,8 @@
 //       w/s : forward/backward
 //       e/q : up/down
 
+let cameraPosition;
+
 class RoverCam {
     constructor(instance) {
       this.sensitivity = 0.02;
@@ -197,6 +199,7 @@ class RoverCam {
       let position = p5.Vector.sub(this.position, p5.Vector.mult(this.right,this.offset[1]));
       let center = p5.Vector.add(position, this.forward);
       this.p5.camera(position.x, position.y+this.offset[0], position.z, center.x, center.y+this.offset[0], center.z, this.up.x, this.up.y, this.up.z);
+      cameraPosition = this.position;
     }
   
     clamp(aNumber, aMin, aMax) {

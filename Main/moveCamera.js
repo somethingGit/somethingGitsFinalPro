@@ -1,29 +1,26 @@
 /* eslint-disable brace-style */
 // /* eslint-disable curly */
-let cameraTilt = 0;
 let firstPersonCamera;
-let cameraPositionX = 0;
-let cameraPositionY = 0; 
-let cameraPositionZ = 80;
 let mouseSensitivity = 0.002;
-let playerPosition;
 let playerOnGround = false;
 let delta = 0; 
+let gameMode = "survival";
 
 function setCam() {
+  let playerHeight = sideLength * 1.5;
   firstPersonCamera = createRoverCam();
   firstPersonCamera.usePointerLock(); 
   firstPersonCamera.setState({   
-    position: [0,-100,0],
+    position: [0,(100 + playerHeight) * -1,0],
     rotation: [0,0,0],
     sensitivity: 0.1,
     speed: 1
   });
-  playerPosition = firstPersonCamera.setState.position;
 }
 
 function keyPressed() {
   requestPointerLock();
+  fullscreen();
   if(keyIsDown(16)) {
     firstPersonCamera.setState({speed: 2});
   }
@@ -36,12 +33,20 @@ function keyPressed() {
   }
 }
 
+function gravity() {
+  if(gameMode === "survival") {
+    movePlayer();
+  }
+}
+
 function movePlayer() {
   if(delta > 0 && !playerOnGround) {firstPersonCamera.setState.position[1] -= delta;}
 }
 
 function mousePressed() {
   requestPointerLock();  
+  fullscreen();
+
 }
 
 function windowResized() {

@@ -461,8 +461,9 @@
 
       "deltaTime": true, 
       
-      "createCamera": true, 
-      "requestPointerLock": true
+      "createRoverCam": true, 
+      "requestPointerLock": true,
+      "setCam":true
     }
   }
 }
