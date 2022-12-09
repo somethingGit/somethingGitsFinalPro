@@ -1,4 +1,5 @@
 let sideLength = 50;
+let topHeight = 0;
 
 class Block {
   constructor(x,y,z) {
@@ -38,6 +39,9 @@ function addChunk(worldHeight) {
       for(let y = 0; y < worldHeight[z]; y++) {
         let block = new Block(x,z,-y);
         newChunk[x][z].push(block);
+        if (x=== 0 && z === 0 && y === worldHeight[z]-1) {
+          topHeight = newChunk[0][0][worldHeight[z]-1].z *sideLength ;
+        }
       }
     }
   }
@@ -71,3 +75,5 @@ function generateHeights(howMany) {
   }
   return tempArray;
 }
+
+
