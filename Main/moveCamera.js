@@ -4,14 +4,16 @@ let firstPersonCamera;
 let mouseSensitivity = 0.002;
 let playerOnGround = false;
 let delta = 0; 
-let gameMode = "survival";
+let gameMode = 1;
+let fs;
+let shouldFullScreen = true;
 
 function setCam() {
   let playerHeight = sideLength * 1.5;
   firstPersonCamera = createRoverCam();
   firstPersonCamera.usePointerLock(); 
   firstPersonCamera.setState({   
-    position: [0,(100 + playerHeight) * -1,0],
+    position: [0, topHeight - playerHeight * 2, 0],
     rotation: [0,0,0],
     sensitivity: 0.1,
     speed: 1
@@ -20,7 +22,9 @@ function setCam() {
 
 function keyPressed() {
   requestPointerLock();
-  fullscreen();
+  if(shouldFullScreen) {
+    fullscreen(!fs);
+  }
   if(keyIsDown(16)) {
     firstPersonCamera.setState({speed: 2});
   }
@@ -34,21 +38,15 @@ function keyPressed() {
 }
 
 function gravity() {
-  if(gameMode === "survival") {
-    movePlayer();
+  if(gameMode === 1) {
+    // eslint-disable-next-line curly
+    if(delta > 0 && !playerOnGround) firstPersonCamera.setState.position[1] += delta;
   }
 }
 
-function movePlayer() {
-  if(delta > 0 && !playerOnGround) {firstPersonCamera.setState.position[1] -= delta;}
-}
-
 function mousePressed() {
-  requestPointerLock();  
-  fullscreen();
-
-}
-
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+  if(shouldFullScreen) {
+    fullscreen(!fs);
+  } 
+  requestPointerLock(); 
 }
