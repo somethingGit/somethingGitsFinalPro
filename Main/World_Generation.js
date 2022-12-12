@@ -1,5 +1,6 @@
 let sideLength = 50;
 let topHeight = 0;
+let grassImg;
 
 class Block {
   constructor(x,y,z) {
@@ -12,6 +13,7 @@ class Block {
   display(i,j,k) {
     fill(this.blockType);
     translate(chunkArray[i][j][k].x*sideLength,chunkArray[i][j][k].z*sideLength,chunkArray[i][j][k].y*sideLength);
+    texture(grassImg);
     box(sideLength,sideLength,sideLength);
     translate(chunkArray[i][j][k].x*sideLength*-1,chunkArray[i][j][k].z*sideLength*-1,chunkArray[i][j][k].y*sideLength*-1);
   }
