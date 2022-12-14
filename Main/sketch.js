@@ -21,7 +21,6 @@ function draw() {
   background(200);
   drawWorld();
   gravity();
-
 }
 
 function windowResized() {

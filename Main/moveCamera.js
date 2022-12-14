@@ -5,7 +5,7 @@ let mouseSensitivity = 0.002;
 let playerOnGround = false;
 let delta = 0; 
 let gameMode = 1;
-let fs;
+let fs = false;
 let shouldFullScreen = true;
 
 function setCam() {
@@ -41,8 +41,10 @@ function gravity() {
   if(gameMode === 1) {
     // eslint-disable-next-line curly
     if(delta < 10 && !playerOnGround) firstPersonCamera.position.y += delta;
+    // eslint-disable-next-line curly
     if(delta < 10) playerOnGround = true;
     delta += 0.1;
+    // eslint-disable-next-line curly
     if(playerOnGround && delta !== 0) delta = 0; 
   }
 }
