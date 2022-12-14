@@ -22,7 +22,7 @@ function setCam() {
 
 function keyPressed() {
   requestPointerLock();
-  if(shouldFullScreen) {
+  if(shouldFullScreen && !fullscreen()) {
     fullscreen(!fs);
   }
   if(keyIsDown(16)) {
@@ -33,19 +33,22 @@ function keyPressed() {
   }
   if(keyIsDown(32) && playerOnGround) {
     playerOnGround = !playerOnGround;
-    delta = 5; 
+    delta = -5; 
   }
 }
 
 function gravity() {
   if(gameMode === 1) {
     // eslint-disable-next-line curly
-    if(delta > 0 && !playerOnGround) firstPersonCamera.setState.position[1] += delta;
+    if(delta < 10 && !playerOnGround) firstPersonCamera.position.y += delta;
+    if(delta < 10) playerOnGround = true;
+    delta += 0.1;
+    if(playerOnGround && delta !== 0) delta = 0; 
   }
 }
 
 function mousePressed() {
-  if(shouldFullScreen) {
+  if(shouldFullScreen && !fullscreen()) {
     fullscreen(!fs);
   } 
   requestPointerLock(); 
