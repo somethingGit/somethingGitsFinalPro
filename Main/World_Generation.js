@@ -78,4 +78,10 @@ function generateHeights(howMany) {
   return tempArray;
 }
 
-
+function blockToCamera() {
+  let xBlock = 0;
+  let yBlock = 0;
+  xBlock = Math.floor(cameraPosition.x/sideLength);
+  yBlock = Math.floor(cameraPosition.z/sideLength);    
+  return {x:xBlock,z:yBlock};
+}
