@@ -15,13 +15,21 @@ function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
   setCam();
   console.log(chunkArray);
+  if (cameraPosition === undefined) {
+    let playerHeight = sideLength * 2;
+    cameraPosition = {
+      x:0,
+      y:topHeight-playerHeight * 2,
+      z:0
+    };
+  }
 }
 
 function draw() {
   background(200);
   drawWorld();
   gravity();
-
+  topHeight = topCoordinate();       
 }
 
 function windowResized() {

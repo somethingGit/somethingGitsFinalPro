@@ -13,7 +13,7 @@ class Block {
   display(i,j,k) {
     fill(this.blockType);
     translate(chunkArray[i][j][k].x*sideLength,chunkArray[i][j][k].z*sideLength,chunkArray[i][j][k].y*sideLength);
-    texture(grassImg);
+    // texture(grassImg);
     box(sideLength,sideLength,sideLength);
     translate(chunkArray[i][j][k].x*sideLength*-1,chunkArray[i][j][k].z*sideLength*-1,chunkArray[i][j][k].y*sideLength*-1);
   }
@@ -41,9 +41,6 @@ function addChunk(worldHeight) {
       for(let y = 0; y < worldHeight[z]; y++) {
         let block = new Block(x,z,-y);
         newChunk[x][z].push(block);
-        if (x=== 0 && z === 0 && y === worldHeight[z]-1) {
-          topHeight = newChunk[0][0][worldHeight[z]-1].z *sideLength ;
-        }
       }
     }
   }
@@ -83,5 +80,14 @@ function blockToCamera() {
   let yBlock = 0;
   xBlock = Math.floor(cameraPosition.x/sideLength);
   yBlock = Math.floor(cameraPosition.z/sideLength);    
-  return {x:xBlock,z:yBlock};
+  return [xBlock,yBlock];
+}
+
+function topCoordinate() {
+  let currentBlock = blockToCamera();
+  let x = currentBlock[0];
+  let y = currentBlock[1];
+  let result;
+  result = chunkArray[x][y][chunkArray[x][y].length-1].z *sideLength ;
+  return result;
 }
