@@ -74,21 +74,21 @@ class RoverCam {
         this.pitch(p.movedY * this.sensitivity / 10); // mouse up/down
         if (p.keyIsDown(k.my1[0]) || p.keyIsDown(k.my1[1])) this.moveY( this.speed); // a
         if (p.keyIsDown(k.my2[0]) || p.keyIsDown(k.my2[1])) this.moveY(-this.speed); // d
-        if (p.keyIsDown(k.e1[0]) || p.keyIsDown(k.e1[1])) this.elevate(-this.speed); // r
-        if (p.keyIsDown(k.e2[0]) || p.keyIsDown(k.e2[1])) this.elevate(this.speed); // f
+        //if (p.keyIsDown(k.e1[0]) || p.keyIsDown(k.e1[1])) this.elevate(-this.speed); // r
+        //if (p.keyIsDown(k.e2[0]) || p.keyIsDown(k.e2[1])) this.elevate(this.speed); // f
       } else { // otherwise yaw/pitch with keys
         if (p.keyIsDown(k.y1[0]) || p.keyIsDown(k.y1[1])) this.yaw(-this.sensitivity); // a
         if (p.keyIsDown(k.y2[0]) || p.keyIsDown(k.y2[1])) this.yaw(this.sensitivity); // d
-        if (p.keyIsDown(k.p1[0]) || p.keyIsDown(k.p1[1])) this.pitch(-this.sensitivity); // r
-        if (p.keyIsDown(k.p2[0]) || p.keyIsDown(k.p2[1])) this.pitch(this.sensitivity); // f
+        //if (p.keyIsDown(k.p1[0]) || p.keyIsDown(k.p1[1])) this.pitch(-this.sensitivity); // r
+        //if (p.keyIsDown(k.p2[0]) || p.keyIsDown(k.p2[1])) this.pitch(this.sensitivity); // f
       }
       if (p.keyIsDown(k.mx1[0]) || p.keyIsDown(k.mx1[1])) this.moveX(this.speed); // w
       if (p.keyIsDown(k.mx2[0]) || p.keyIsDown(k.mx2[1])) this.moveX(-this.speed); // s
       if (p.keyIsDown(k.mz1[0]) || p.keyIsDown(k.mz1[1])) this.moveZ(this.speed); // e
       if (p.keyIsDown(k.mz2[0]) || p.keyIsDown(k.mz2[1])) this.moveZ(-this.speed); // q
   
-      if (p.keyIsDown(k.f1[0]) || p.keyIsDown(k.f1[1])) this.fov(-this.sensitivity / 10); // +
-      if (p.keyIsDown(k.f2[0]) || p.keyIsDown(k.f2[1])) this.fov(this.sensitivity / 10); // -
+      //if (p.keyIsDown(k.f1[0]) || p.keyIsDown(k.f1[1])) this.fov(-this.sensitivity / 10); // +
+      //if (p.keyIsDown(k.f2[0]) || p.keyIsDown(k.f2[1])) this.fov(this.sensitivity / 10); // -
   
       // test roll TBD
       //if(p.keyIsDown(k.r1[0]) || p.keyIsDown(k.r1[1])) this.roll(this.sensitivity);  // z
