@@ -96,6 +96,11 @@ function topCoordinate() {
   let x = currentBlock[0];
   let y = currentBlock[1];
   let result;
-  result = chunkArray[x][y][chunkArray[x][y].length-1].z *sideLength ;
+  try {
+    result = chunkArray[x][y][chunkArray[x][y].length-1].z *sideLength;   
+  } 
+  catch (error) {
+    return 0;  
+  }
   return result;
 }
