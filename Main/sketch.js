@@ -5,6 +5,7 @@
 // Extra for Experts:
 // - I am using 3d object using the renderer Webgl. 
 
+
 function preload() {
   grassImg = loadImage("Assets/Grass_01.png");
   noiseSeed(10);
