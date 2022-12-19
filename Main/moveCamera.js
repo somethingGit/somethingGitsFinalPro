@@ -4,7 +4,7 @@ let firstPersonCamera;
 let mouseSensitivity = 0.002;
 let playerOnGround = false;
 let delta = 0; 
-let gameMode = 1;
+let gameMode = 0;
 let fs = false;
 let shouldFullScreen = true;
 
@@ -39,13 +39,12 @@ function keyPressed() {
 
 function gravity() {
   if(gameMode === 1) {
-    // eslint-disable-next-line curly
-    if(delta < 10 && !playerOnGround) firstPersonCamera.position.y += delta;
-    // eslint-disable-next-line curly
-    if(delta < 10) playerOnGround = true;
-    delta += 0.1;
-    // eslint-disable-next-line curly
-    if(playerOnGround && delta !== 0) delta = 0; 
+    if(cameraPosition.y < topHeight) {
+      firstPersonCamera.setState({position: [cameraPosition.x, cameraPosition += delta, cameraPosition.z]});
+    }
+    else {
+      firstPersonCamera.setState({position: [cameraPosition.x, topHeight - sideLength * 1.5 * 2, cameraPosition.y]});
+    }
   }
 }
 
