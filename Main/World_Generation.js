@@ -63,7 +63,11 @@ const chunkSize = 16;
 let chunkArray = [];
 
 function generateWorld() {
-  chunkArray = addChunk(generateHeights(16));
+  let chunkHeight = [];
+  for (let i =0;i<16;i++) {
+    chunkHeight.push(generateHeights(16));
+  }
+  chunkArray = addChunk(chunkHeight);
 }
   
 function addChunk(worldHeight) {
@@ -72,7 +76,7 @@ function addChunk(worldHeight) {
     newChunk.push([]);
     for(let z = 0; z < chunkSize; z++) {
       newChunk[x].push([]);
-      for(let y = 0; y < worldHeight[z]; y++) {
+      for(let y = 0; y < worldHeight[x][z]; y++) {
         let block = new Block(x,z,-y);
         newChunk[x][z].push(block);
       }
@@ -88,13 +92,13 @@ function drawWorld() {
         let count =0;
         for (let a = -1; a<=1;a++) {
           if (a!==0) {
-            if (i+a >=0 && i+a <= chunkArray.length-1) {
+            if (i+a >=0 && i+a <= chunkArray.length-1 && chunkArray[i+a][j][k]) {
               count+=1;
             }
-            if (j+a >=0 && j+a <= chunkArray[i].length-1) {
+            if (j+a >=0 && j+a <= chunkArray[i].length-1 && chunkArray[i][j+a][k] ) {
               count+=1;
             }
-            if (k+a >=0 && k+a <= chunkArray[i][j].length-1) {
+            if (k+a >=0 && k+a <= chunkArray[i][j].length-1 && chunkArray[i][j][k+a] ) {
               count+=1;
             }
           }
@@ -112,7 +116,7 @@ function generateHeights(howMany) {
   let time = random(10000);
   for (let i = 0; i<howMany;i++) {
     tempArray.push(floor(noise(time)*10));
-    time +=0.1;
+    time +=0.01;
   }
   return tempArray;
 }
