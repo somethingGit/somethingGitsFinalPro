@@ -114,10 +114,11 @@ function drawWorld() {
 
 function generateHeights(howMany) {
   let tempArray = [];
-  let time = random(9998,10000); // lower the number to make terrain
+  let start = random(10000);
+  let time = random(start,start+2); // lower the number to make terrain
   for (let i = 0; i<howMany;i++) {
     tempArray.push(floor(noise(time)*10)); //the maximum height of terrain
-    time +=0.03; //increase value overtime
+    time +=0.065; //increase value overtime
   }
   return tempArray;
 }
