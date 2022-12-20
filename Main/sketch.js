@@ -8,6 +8,7 @@
 
 function preload() {
   grassImg = loadImage("Assets/Grass_01.png");
+  twoDShapes();
   noiseSeed(10);
   generateWorld();
 }
