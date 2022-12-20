@@ -69,7 +69,7 @@ function generateWorld() {
   }
   chunkArray = addChunk(chunkHeight);
 }
-  
+//make a 3D array of block
 function addChunk(worldHeight) {
   let newChunk = [];
   for(let x = 0; x < chunkSize; x++) {
@@ -85,6 +85,7 @@ function addChunk(worldHeight) {
   return newChunk; 
 } 
 
+// draw world with restriction for efficiency
 function drawWorld() {
   for(let i = 0; i < chunkArray.length; i++) {
     for(let j = 0; j < chunkArray[i].length; j++) {
@@ -113,14 +114,16 @@ function drawWorld() {
 
 function generateHeights(howMany) {
   let tempArray = [];
-  let time = random(10000);
+  let start = random(10000);
+  let time = random(start,start+2); // lower the number to make terrain
   for (let i = 0; i<howMany;i++) {
-    tempArray.push(floor(noise(time)*10));
-    time +=0.01;
+    tempArray.push(floor(noise(time)*10)); //the maximum height of terrain
+    time +=0.065; //increase value overtime
   }
   return tempArray;
 }
 
+// get Jason the top block or the block we currently stand
 function blockToCamera() {
   let xBlock = 0;
   let yBlock = 0;
