@@ -9,3 +9,8 @@ html, body {
 canvas {
   display: block;
 }
+
+script {
+  position: absolute;
+  
+}
