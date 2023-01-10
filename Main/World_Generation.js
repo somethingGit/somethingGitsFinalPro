@@ -14,41 +14,7 @@ class Block {
     fill(this.blockType);
     // translate the block back and forth to creates the chunk
     translate(chunkArray[i][j][k].x*sideLength,chunkArray[i][j][k].z*sideLength,chunkArray[i][j][k].y*sideLength);
-    // translate and draw the block by quad for efficiency and texture
-    //front
-    // quad(0, 0, sideLength, 0, sideLength, sideLength, 0, sideLength);
-
-    // push();
-    // translate(0, 0, -sideLength);
-    // rotateY(-90);
-    // quad(0, 0, sideLength, 0, sideLength, sideLength, 0, sideLength);
-
-    // pop();
-    // push();
-    // texture(grassImg);
-    // translate(0, 0, -sideLength);
-    // rotateX(90);
-    // quad(0, 0, sideLength, 0, sideLength, sideLength, 0, sideLength);
-
-    // pop();
-    // push();
-    // translate(sideLength, 0, 0);
-    // rotateY(90);
-    // quad(0, 0, sideLength, 0, sideLength, sideLength, 0, sideLength);
-
-    // pop();
-    // push();
-    // translate(0, sideLength, 0);
-    // rotateX(-90);
-    // quad(0, 0, sideLength, 0, sideLength, sideLength, 0, sideLength);
-
-    // pop();
-    // push();
-    // rotateY(180);
-    // translate(-sideLength, 0, sideLength);
-    // quad(0, 0, sideLength, 0, sideLength, sideLength, 0, sideLength);
     box(sideLength,sideLength,sideLength);
-
     translate(chunkArray[i][j][k].x*sideLength*-1,chunkArray[i][j][k].z*sideLength*-1,chunkArray[i][j][k].y*sideLength*-1);
   }
 }
@@ -61,6 +27,20 @@ class Grassblock extends Block {
 
 const chunkSize = 16;
 let chunkArray = [];
+console.time();
+let inventory = createInventory();
+console.timeEnd();
+
+function createInventory() {
+  let emptyArray = [];
+  for (let y = 0;y<4;y++) {
+    emptyArray.push([]);
+    for (let x = 0;x<9;x++) {
+      emptyArray[y].push(0);
+    }
+  }
+  return emptyArray;
+}
 
 function generateWorld() {
   let chunkHeight = [];
