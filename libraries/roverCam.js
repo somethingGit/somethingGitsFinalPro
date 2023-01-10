@@ -32,6 +32,7 @@
 //       e/q : up/down
 
 let cameraPosition;
+let cameraRotation;
 
 class RoverCam {
     constructor(instance) {
@@ -200,6 +201,7 @@ class RoverCam {
       let center = p5.Vector.add(position, this.forward);
       this.p5.camera(position.x, position.y+this.offset[0], position.z, center.x, center.y+this.offset[0], center.z, this.up.x, this.up.y, this.up.z);
       cameraPosition = this.position;
+      cameraRotation = this.rotation;
     }
   
     clamp(aNumber, aMin, aMax) {
