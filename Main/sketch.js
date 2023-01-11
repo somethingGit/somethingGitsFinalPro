@@ -8,6 +8,7 @@
 
 function preload() {
   grassImg = loadImage("Assets/Grass_01.png");
+  inventory = createInventory();
   twoDShapes();
   noiseSeed(10);
   generateWorld();

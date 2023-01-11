@@ -27,16 +27,14 @@ class Grassblock extends Block {
 
 const chunkSize = 16;
 let chunkArray = [];
-console.time();
-let inventory = createInventory();
-console.timeEnd();
+let inventory;
 
 function createInventory() {
   let emptyArray = [];
   for (let y = 0;y<4;y++) {
     emptyArray.push([]);
     for (let x = 0;x<9;x++) {
-      emptyArray[y].push(0);
+      emptyArray[y].push([]);
     }
   }
   return emptyArray;
@@ -107,9 +105,11 @@ function generateHeights(howMany) {
 function blockToCamera() {
   let xBlock = 0;
   let yBlock = 0;
+  let zBlock = 0;
   xBlock = Math.floor(cameraPosition.x/sideLength);
-  yBlock = Math.floor(cameraPosition.z/sideLength);    
-  return [xBlock,yBlock];
+  yBlock = Math.floor(cameraPosition.z/sideLength); 
+  zBlock = Math.floor(cameraPosition.y/sideLength);   
+  return [xBlock,yBlock,zBlock];
 }
 
 function topCoordinate() {
@@ -124,4 +124,12 @@ function topCoordinate() {
     return 0;  
   }
   return result;
+}
+
+function blockDistance() {
+  
+}
+
+function mousePressed() {
+
 }
