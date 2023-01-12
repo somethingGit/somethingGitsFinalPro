@@ -10,7 +10,7 @@ let shouldFullScreen = true;
 
 function setCam() {
   let playerHeight = sideLength * 1.5;
-  firstPersonCamera = new Player();
+  firstPersonCamera = createRoverCam();
   firstPersonCamera.usePointerLock(); 
   firstPersonCamera.setState({   
     position: [0, topHeight - playerHeight * 2, 0],
@@ -37,7 +37,7 @@ function keyPressed() {
 }
 
 function gravity() {
-  firstPersonCamera.update();
+  //firstPersonCamera.update();
   if(gameMode === 1) {
     if(cameraPosition.y < topHeight) {
       firstPersonCamera.setState({position: [cameraPosition.x, cameraPosition += delta, cameraPosition.z]});

@@ -32,7 +32,8 @@ function draw() {
   background(200);
   drawWorld();
   gravity();
-  topHeight = topCoordinate();       
+  topHeight = topCoordinate();
+  blockDistance();   
 }
 
 function windowResized() {

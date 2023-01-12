@@ -127,7 +127,10 @@ function topCoordinate() {
 }
 
 function blockDistance() {
-  
+  let v1,p1;
+  v1 = firstPersonCamera.forward;
+  p1 = firstPersonCamera.position;
+  line(p1.x,p1.y,p1.z,50,50,50);
 }
 
 function mousePressed() {
