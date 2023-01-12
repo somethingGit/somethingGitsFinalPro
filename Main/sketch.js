@@ -5,11 +5,12 @@
 // Extra for Experts:
 // - I am using 3d object using the renderer Webgl. 
 
+let fontOne;
 
 function preload() {
   grassImg = loadImage("Assets/Grass_01.png");
   inventory = createInventory();
-  twoDShapes();
+  fontOne = loadFont("Assets/hussar-bold-web-edition-font/HussarBoldWebEdition-xq5O.otf");
   noiseSeed(10);
   generateWorld();
 }
@@ -26,6 +27,7 @@ function setup() {
       z:0
     };
   }
+  frameRate(144);
 }
 
 function draw() {
@@ -33,7 +35,16 @@ function draw() {
   drawWorld();
   gravity();
   topHeight = topCoordinate();
+  textFont(fontOne);
   blockDistance();   
+  push(); // this affects the frame rate
+  fill(0);
+  camera(0, 0, height / 2.0 / tan(PI * 30.0 / 180.0), 0, 0, 0, 0, 1, 0);
+  ortho(-width / 2, width / 2, -height / 2, height / 2, 0, 1000);
+  scale(2);
+  text(frameRate(), 0, 0);
+  pop();
+
 }
 
 function windowResized() {
