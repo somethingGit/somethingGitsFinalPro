@@ -65,10 +65,11 @@ function addChunk(worldHeight) {
 
 // draw world with restriction for efficiency
 function drawWorld() {
+  let count;
   for(let i = 0; i < chunkArray.length; i++) {
     for(let j = 0; j < chunkArray[i].length; j++) {
       for(let k = 0; k < chunkArray[i][j].length; k++) {
-        let count =0;
+        count = 0;
         for (let a = -1; a<=1;a++) {
           if (a!==0) {
             if (i+a >=0 && i+a <= chunkArray.length-1 && chunkArray[i+a][j][k]) {
@@ -95,7 +96,7 @@ function generateHeights(howMany) {
   let start = random(5,10000);
   let time = random(start,start+2); // lower the number to make terrain
   for (let i = 0; i<howMany;i++) {
-    tempArray.push(floor(noise(time)*10)); //the maximum height of terrain
+    tempArray.push(floor(noise(time)*15)); //the maximum height of terrain
     time +=0.065; //increase value overtime
   }
   return tempArray;

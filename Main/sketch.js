@@ -6,6 +6,8 @@
 // - I am using 3d object using the renderer Webgl. 
 
 let fontOne;
+p5.disableFriendlyErrors = true; // disables FES
+
 
 function preload() {
   grassImg = loadImage("Assets/Grass_01.png");
@@ -37,6 +39,7 @@ function draw() {
   topHeight = topCoordinate();
   textFont(fontOne);
   blockDistance();   
+  // Heads Up Display extension by jWilliam
   push(); // this affects the frame rate
   fill(0);
   camera(0, 0, height / 2.0 / tan(PI * 30.0 / 180.0), 0, 0, 0, 0, 1, 0);
