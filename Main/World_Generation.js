@@ -130,9 +130,12 @@ function blockDistance() {
   let v1,p1;
   v1 = firstPersonCamera.forward;
   p1 = firstPersonCamera.position;
-  line(p1.x,p1.y,p1.z,50,50,50);
+  line(p1.x,50,p1.z,50,p1.y,50);
 }
 
-function mousePressed() {
-
-}
+// function drawCharacter() {
+//   let p1 = firstPersonCamera.position;
+//   translate(p1.x*sideLength,p1.y*sideLength,p1.z*sideLength);
+//   box(sideLength,sideLength,sideLength);
+//   translate(-p1.x*sideLength,-p1.y*sideLength,-p1.z*sideLength);
+// }
