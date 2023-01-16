@@ -6,7 +6,7 @@
 // - I am using 3d object using the renderer Webgl. 
 
 let fontOne;
-p5.disableFriendlyErrors = true; // disables FES
+//p5.disableFriendlyErrors = true; // disables FES
 
 
 function preload() {
@@ -29,7 +29,7 @@ function setup() {
       z:0
     };
   }
-  frameRate(144);
+  frameRate(40);
 }
 
 function draw() {
@@ -37,17 +37,10 @@ function draw() {
   drawWorld();
   gravity();
   topHeight = topCoordinate();
-  textFont(fontOne);
   blockDistance();   
-  // Heads Up Display extension by jWilliam
-  push(); // this affects the frame rate
-  fill(0);
-  camera(0, 0, height / 2.0 / tan(PI * 30.0 / 180.0), 0, 0, 0, 0, 1, 0);
-  ortho(-width / 2, width / 2, -height / 2, height / 2, 0, 1000);
-  scale(2);
-  text(frameRate(), 0, 0);
+  push(); // This affects framerate
+  twoDShapes();
   pop();
-
 }
 
 function windowResized() {
