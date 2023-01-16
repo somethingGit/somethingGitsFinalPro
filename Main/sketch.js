@@ -6,7 +6,7 @@
 // - I am using 3d object using the renderer Webgl. 
 
 let fontOne;
-//p5.disableFriendlyErrors = true; // disables FES
+p5.disableFriendlyErrors = true; // disables FES
 
 
 function preload() {
@@ -29,14 +29,17 @@ function setup() {
       z:0
     };
   }
-  frameRate(40);
+  frameRate(144);
+  topLeftWidth = -width / 4;
+  topLeftHeight = -height / 4.3;
+  curAverage = frameRate();
 }
 
 function draw() {
   background(200);
   drawWorld();
   gravity();
-  topHeight = topCoordinate();
+  topHeight = topCoordinate() - sideLength * 2;
   blockDistance();   
   push(); // This affects framerate
   twoDShapes();
@@ -45,4 +48,6 @@ function draw() {
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
+  topLeftWidth = -width / 4;
+  topLeftHeight = -height / 4.3;
 }
