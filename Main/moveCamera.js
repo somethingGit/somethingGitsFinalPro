@@ -55,7 +55,7 @@ class Player extends RoverCam {
     this.speed = 0.04;
     this.dimensions = createVector(1, 3, 1);
     this.velocity = createVector(0, 0, 0);
-    this.gravity = createVector(0, 0.5, 0);
+    this.gravity = createVector(0, 0.99, 0);
     this.grounded = false;
   }
   
@@ -64,7 +64,7 @@ class Player extends RoverCam {
       // extend the keyboard controls by adding a hop behavior
       if (this.grounded && keyIsDown(32)){ // space
         this.grounded = false;
-        this.velocity.y = -1.5;
+        this.velocity.y = -sideLength / 2;
         this.position.y -= 0.2;
       }
       else if(!this.grounded) {
@@ -74,6 +74,10 @@ class Player extends RoverCam {
       }
       if(cameraPosition.y + sideLength * 2 >= topCoordinate()) {
         this.grounded = true;
+        firstPersonCamera.position.y = topCoordinate() - sideLength * 2;
+      }
+      else if(cameraPosition.y + sideLength * 2 <= topCoordinate()) {
+        this.grouded = false;
       }
     }
   }
