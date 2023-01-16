@@ -107,9 +107,9 @@ function blockToCamera() {
   let xBlock = 0;
   let yBlock = 0;
   let zBlock = 0;
-  xBlock = Math.floor(cameraPosition.x/sideLength);
-  yBlock = Math.floor(cameraPosition.z/sideLength); 
-  zBlock = Math.floor(cameraPosition.y/sideLength);   
+  xBlock = Math.ceil(cameraPosition.x/sideLength);
+  yBlock = Math.ceil(cameraPosition.z/sideLength); 
+  zBlock = Math.ceil(cameraPosition.y/sideLength);   
   return [xBlock,yBlock,zBlock];
 }
 
