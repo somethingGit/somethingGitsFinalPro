@@ -13,9 +13,9 @@ function setCam() {
   firstPersonCamera = new Player();
   firstPersonCamera.usePointerLock(); 
   firstPersonCamera.setState({   
-    position: [0, topHeight - playerHeight * 2, 0],
+    position: [0, topHeight, 0],
     sensitivity: 0.15,
-    speed: 1
+    speed: 1.2
   });
 }
 
@@ -28,11 +28,17 @@ function keyPressed() {
     firstPersonCamera.setState({speed: 2});
   }
   else {
-    firstPersonCamera.setState({speed: 1});
+    firstPersonCamera.setState({speed: 1.2});
   }
   if(keyIsDown(32) && playerOnGround) {
     playerOnGround = !playerOnGround;
     delta = -5; 
+  }
+  if(keyCode === 49) {
+    gameMode = 1;
+  }
+  else if(keyCode === 48) {
+    gameMode = 0;
   }
 }
 
@@ -78,6 +84,11 @@ class Player extends RoverCam {
       }
       else if(cameraPosition.y + sideLength * 2 <= topCoordinate()) {
         this.grouded = false;
+      }
+    }
+    else if(gameMode === 0) {
+      if(keyIsDown(32)) {
+        this.moveZ(this.speed); //e 
       }
     }
   }

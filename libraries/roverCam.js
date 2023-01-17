@@ -73,7 +73,12 @@ class RoverCam {
       if (RoverCam.pointerLock) {
         this.yaw(p.movedX * this.sensitivity / 10); // mouse left/right
         this.pitch(p.movedY * this.sensitivity / 10); // mouse up/down
-        if (p.keyIsDown(k.my1[0]) || p.keyIsDown(k.my1[1])) this.moveY( this.speed); // a
+        if ((p.keyIsDown(k.my1[0]) || p.keyIsDown(k.my1[1]))) {
+          this.moveY( this.speed); // a
+          if(gameMode === 1) {
+            firstPersonCamera.position.y = topCoordinate() - sideLength * 2;
+          }
+        }
         if (p.keyIsDown(k.my2[0]) || p.keyIsDown(k.my2[1])) this.moveY(-this.speed); // d
         //if (p.keyIsDown(k.e1[0]) || p.keyIsDown(k.e1[1])) this.elevate(-this.speed); // r
         //if (p.keyIsDown(k.e2[0]) || p.keyIsDown(k.e2[1])) this.elevate(this.speed); // f
@@ -85,7 +90,7 @@ class RoverCam {
       }
       if (p.keyIsDown(k.mx1[0]) || p.keyIsDown(k.mx1[1])) this.moveX(this.speed); // w
       if (p.keyIsDown(k.mx2[0]) || p.keyIsDown(k.mx2[1])) this.moveX(-this.speed); // s
-      if (p.keyIsDown(k.mz1[0]) || p.keyIsDown(k.mz1[1])) this.moveZ(this.speed); // e
+      if ((p.keyIsDown(k.mz1[0]) || p.keyIsDown(k.mz1[1])) && gameMode === 0) this.moveZ(this.speed); // e
       if (p.keyIsDown(k.mz2[0]) || p.keyIsDown(k.mz2[1])) this.moveZ(-this.speed); // q
   
       //if (p.keyIsDown(k.f1[0]) || p.keyIsDown(k.f1[1])) this.fov(-this.sensitivity / 10); // +
