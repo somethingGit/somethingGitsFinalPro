@@ -40,7 +40,6 @@ function draw() {
   drawWorld();
   gravity();
   topHeight = topCoordinate() - sideLength * 2;
-  blockDistance();   
   push(); // This affects framerate
   twoDShapes();
   pop();

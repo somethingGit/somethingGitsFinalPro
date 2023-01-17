@@ -131,7 +131,7 @@ function collisionCheck3dRectangleX(a,b) {
   let aXmax,aXmin;
   let bXmax,bXmin;  
   let collideX;
-  aXmax = a.x+ a.length;
+  aXmax = a.x + a.xLength;
   bXmax = b.x+sideLength;
   aXmin = a.x-sideLength;
   bXmin = a.x-sideLength;
@@ -143,7 +143,7 @@ function collisionCheck3dRectangleX(a,b) {
 function collisionCheck3dRectangleY(a,b) {
   let aYmax,aYmin;
   let bYmax,bYmin;
-  let collideY
+  let collideY;
   if (aYmin < bYmax && aYmax > bYmin) { //check the collide on Y
     collideY = true;
   }
