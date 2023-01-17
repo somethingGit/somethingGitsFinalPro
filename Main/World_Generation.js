@@ -54,7 +54,7 @@ function addChunk(worldHeight) {
     newChunk.push([]);
     for(let z = 0; z < chunkSize; z++) {
       newChunk[x].push([]);
-      for(let y = 0; y < worldHeight[x][z]; y++) {
+      for(let y = 0; y < 3; y++) {
         let block = new Block(x,z,-y);
         newChunk[x][z].push(block);
       }
@@ -127,16 +127,35 @@ function topCoordinate() {
   return result;
 }
 
-function blockDistance() {
-  let v1,p1;
-  v1 = firstPersonCamera.forward;
-  p1 = firstPersonCamera.position;
-  line(p1.x,50,p1.z,50,p1.y,50);
+function collisionCheck3dRectangleX(a,b) {
+  let aXmax,aXmin;
+  let bXmax,bXmin;  
+  let collideX;
+  aXmax = a.x + a.xLength;
+  bXmax = b.x+sideLength;
+  aXmin = a.x-sideLength;
+  bXmin = a.x-sideLength;
+  if (aXmin < bXmax && aXmax > bXmin) { //check the collide on X
+    collideX = true;
+  }
 }
 
-// function drawCharacter() {
-//   let p1 = firstPersonCamera.position;
-//   translate(p1.x*sideLength,p1.y*sideLength,p1.z*sideLength);
-//   box(sideLength,sideLength,sideLength);
-//   translate(-p1.x*sideLength,-p1.y*sideLength,-p1.z*sideLength);
-// }
+function collisionCheck3dRectangleY(a,b) {
+  let aYmax,aYmin;
+  let bYmax,bYmin;
+  let collideY;
+  if (aYmin < bYmax && aYmax > bYmin) { //check the collide on Y
+    collideY = true;
+  }
+}
+
+function collisionCheck3dRectangleZ(a,b) {
+  let aZmax,aZmin;
+  let bZmax,bZmin;
+  let collideZ;
+  if (aZmin < bZmax && aZmax > bZmin) { // check the collide on Z
+    collideZ = true;
+  }
+}
+
+
