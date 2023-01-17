@@ -43,6 +43,7 @@ function draw() {
   push(); // This affects framerate
   twoDShapes();
   pop();
+  colliding(firstPersonCamera);
 }
 
 function windowResized() {

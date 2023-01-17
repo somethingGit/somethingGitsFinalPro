@@ -127,35 +127,61 @@ function topCoordinate() {
   return result;
 }
 
-function collisionCheck3dRectangleX(a,b) {
-  let aXmax,aXmin;
-  let bXmax,bXmin;  
-  let collideX;
-  aXmax = a.x + a.xLength;
-  bXmax = b.x+sideLength;
-  aXmin = a.x-sideLength;
-  bXmin = a.x-sideLength;
+function collisionCheck3dRectangleX(player,b) {
+  let bXmax,bXmin;
+  let aXmax = player.position.x + sideLength*0.375;
+  let aXmin = player.position.x - sideLength*0.375;
+  bXmax = b.x*sideLength;
+  bXmin = (b.x-1)*sideLength;
   if (aXmin < bXmax && aXmax > bXmin) { //check the collide on X
-    collideX = true;
+    return true;
   }
 }
 
-function collisionCheck3dRectangleY(a,b) {
+function collisionCheck3dRectangleY(player,b) {
   let aYmax,aYmin;
   let bYmax,bYmin;
-  let collideY;
+  aYmax = player.position.y + sideLength*0.375;
+  aYmin = player.position.y - sideLength*0.375;
+  bYmax = b.y*sideLength;
+  bYmin = (b.y-1)*sideLength;
   if (aYmin < bYmax && aYmax > bYmin) { //check the collide on Y
-    collideY = true;
+    return true;
   }
 }
 
-function collisionCheck3dRectangleZ(a,b) {
+function collisionCheck3dRectangleZ(player,b) {
   let aZmax,aZmin;
   let bZmax,bZmin;
-  let collideZ;
+  aZmax = player.position.z + sideLength*1.5;
+  aZmin = player.position.z - sideLength*0.5;
+  bZmax = b.z*sideLength;
+  bZmin = (b.z-1)*sideLength;
   if (aZmin < bZmax && aZmax > bZmin) { // check the collide on Z
-    collideZ = true;
+    return true;
   }
 }
 
+function collide(player,block) {
+  if (collisionCheck3dRectangleX(player,block)) {
+    player.position.x = block.x - sideLength*0.376;
+    player.setState({speed:0});
+  }
+  else {
+    player.setState({speed:1.2});
+  }
+}
 
+function colliding(player) {
+  let currentBlock = blockToCamera();
+  for (let a =-1; a++; a<=1) {
+    if (a!== 0) {
+      collide(player,chunkArray[currentBlock[0]+a][currentBlock[1]][currentBlock[2]]);
+      collide(player,chunkArray[currentBlock[0]+a][currentBlock[1]+a][currentBlock[2]]);
+      collide(player,chunkArray[currentBlock[0]+a][currentBlock[1]+a][currentBlock[2]+a]);
+      collide(player,chunkArray[currentBlock[0]][currentBlock[1]+a][currentBlock[2]]);
+      collide(player,chunkArray[currentBlock[0]][currentBlock[1]+a][currentBlock[2]+a]);
+      collide(player,chunkArray[currentBlock[0]][currentBlock[1]][currentBlock[2]+a]);
+    }
+  }
+}
