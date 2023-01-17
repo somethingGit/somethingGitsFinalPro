@@ -2,6 +2,7 @@ let curAverage;
 let lowestFPS = 100;
 let topLeftWidth;
 let topLeftHeight;
+let toggledH = false;
 
 function twoDShapes() {
   // Heads Up Display extension by jWilliam at https://editor.p5js.org/jwdunn1/sketches/iI-2XX0Hw
@@ -17,4 +18,10 @@ function twoDShapes() {
     lowestFPS = frameRate();
   }
   text(`${lowestFPS} lowest FPS`);
+  let rectWidth = 15 / 2;
+  let rectHeight = 15; 
+  noStroke();
+  fill(color(128, 128, 128, 200));
+  rect(0 - rectWidth, 0 - rectHeight, rectWidth, rectHeight * 1.5);
+  rect(0 - rectHeight, 0 - rectWidth, rectHeight * 1.5, rectWidth);
 }
