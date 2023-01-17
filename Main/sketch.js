@@ -29,7 +29,7 @@ function setup() {
       z:0
     };
   }
-  frameRate(144);
+  frameRate(40);
   topLeftWidth = -width / 4;
   topLeftHeight = -height / 4.3;
   curAverage = frameRate();

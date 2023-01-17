@@ -7,9 +7,11 @@ let delta = 0;
 let gameMode = 1;
 let fs = false;
 let shouldFullScreen = true;
+let playerLength;
+let playerHeight;
 
 function setCam() {
-  let playerHeight = sideLength * 1.5;
+  playerHeight = sideLength * 1.9;
   firstPersonCamera = new Player();
   firstPersonCamera.usePointerLock(); 
   firstPersonCamera.setState({   
@@ -40,10 +42,15 @@ function keyPressed() {
   else if(keyCode === 48) {
     gameMode = 0;
   }
+  if(keyCode === 72) {
+    toggledH = !toggledH;
+  }
 }
 
 function gravity() {
-  firstPersonCamera.update();
+  if(toggledH === false) {
+    firstPersonCamera.update();
+  }
 }
 
 function mousePressed() {
@@ -61,7 +68,7 @@ class Player extends RoverCam {
     this.speed = 0.04;
     this.dimensions = createVector(1, 3, 1);
     this.velocity = createVector(0, 0, 0);
-    this.gravity = createVector(0, 0.99, 0);
+    this.gravity = createVector(0, 1.3, 0);
     this.grounded = false;
   }
   
@@ -78,11 +85,11 @@ class Player extends RoverCam {
         this.position.add(this.velocity);
         
       }
-      if(cameraPosition.y + sideLength * 2 >= topCoordinate()) {
+      if(cameraPosition.y + playerHeight >= topCoordinate()) {
         this.grounded = true;
-        firstPersonCamera.position.y = topCoordinate() - sideLength * 2;
+        firstPersonCamera.position.y = topCoordinate() - playerHeight;
       }
-      else if(cameraPosition.y + sideLength * 2 <= topCoordinate()) {
+      else if(cameraPosition.y + playerHeight <= topCoordinate()) {
         this.grouded = false;
       }
     }
@@ -92,4 +99,7 @@ class Player extends RoverCam {
       }
     }
   }
+  // collide(this,block) {
+      
+  // }
 }
