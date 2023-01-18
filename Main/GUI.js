@@ -22,6 +22,6 @@ function twoDShapes() {
   let rectHeight = 15; 
   noStroke();
   fill(color(128, 128, 128, 200));
-  rect(0 - rectWidth, 0 - rectHeight, rectWidth, rectHeight * 1.5);
+  rect(-rectWidth, -rectHeight, rectWidth, rectHeight * 1.5);
   rect(0 - rectHeight, 0 - rectWidth, rectHeight * 1.5, rectWidth);
 }

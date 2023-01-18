@@ -15,7 +15,7 @@ function setCam() {
   firstPersonCamera = new Player();
   firstPersonCamera.usePointerLock(); 
   firstPersonCamera.setState({   
-    position: [0, topHeight, 0],
+    position: [0, topHeight - playerHeight, 0],
     sensitivity: 0.15,
     speed: 1.2
   });
@@ -48,9 +48,7 @@ function keyPressed() {
 }
 
 function gravity() {
-  if(toggledH === false) {
-    firstPersonCamera.update();
-  }
+  firstPersonCamera.update();
 }
 
 function mousePressed() {

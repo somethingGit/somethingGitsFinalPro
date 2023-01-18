@@ -33,6 +33,7 @@
 
 let cameraPosition;
 let cameraRotation;
+let upWithKeys = false;
 
 class RoverCam {
     constructor(instance) {
@@ -74,8 +75,8 @@ class RoverCam {
         this.yaw(p.movedX * this.sensitivity / 10); // mouse left/right
         this.pitch(p.movedY * this.sensitivity / 10); // mouse up/down
         if ((p.keyIsDown(k.my1[0]) || p.keyIsDown(k.my1[1]))) {
-          this.moveY( this.speed); // a
-          /*if(gameMode === 1) {
+          this.moveY(this.speed); // a
+          /*if(gameMode === 1 && !upWithKeys) {
             firstPersonCamera.position.y = topCoordinate() - sideLength * 2;
           }*/
         }
@@ -226,3 +227,4 @@ class RoverCam {
   p5.prototype.createRoverCam = function(){
     return new RoverCam(this);
   }
+  
