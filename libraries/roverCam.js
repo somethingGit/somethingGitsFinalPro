@@ -92,7 +92,7 @@ class RoverCam {
       if (p.keyIsDown(k.mx1[0]) || p.keyIsDown(k.mx1[1])) this.moveX(this.speed); // w
       if (p.keyIsDown(k.mx2[0]) || p.keyIsDown(k.mx2[1])) this.moveX(-this.speed); // s
       if ((p.keyIsDown(k.mz1[0]) || p.keyIsDown(k.mz1[1])) && gameMode === 0) this.moveZ(this.speed); // e
-      if (p.keyIsDown(k.mz2[0]) || p.keyIsDown(k.mz2[1])) this.moveZ(-this.speed); // q
+      if (p.keyIsDown(k.mz2[0]) || p.keyIsDown(k.mz2[1]) || keyIsDown(17)) this.moveZ(-this.speed); // q
   
       //if (p.keyIsDown(k.f1[0]) || p.keyIsDown(k.f1[1])) this.fov(-this.sensitivity / 10); // +
       //if (p.keyIsDown(k.f2[0]) || p.keyIsDown(k.f2[1])) this.fov(this.sensitivity / 10); // -

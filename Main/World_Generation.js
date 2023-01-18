@@ -54,7 +54,7 @@ function addChunk(worldHeight) {
     newChunk.push([]);
     for(let z = 0; z < chunkSize; z++) {
       newChunk[x].push([]);
-      for(let y = 0; y < 3; y++) {
+      for(let y = 0; y < 10; y++) {
         let block = new Block(x,z,-y);
         newChunk[x][z].push(block);
       }
