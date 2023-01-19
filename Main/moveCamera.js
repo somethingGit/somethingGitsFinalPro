@@ -17,7 +17,8 @@ function setCam() {
   firstPersonCamera.setState({   
     position: [0, topHeight - playerHeight, 0],
     sensitivity: 0.15,
-    speed: 1.2
+    speed: 1.2,
+    fovy : 1
   });
 }
 
@@ -27,10 +28,10 @@ function keyPressed() {
     fullscreen(!fs);
   }
   if(keyIsDown(16)) {
-    firstPersonCamera.setState({speed: 2});
+    firstPersonCamera.setState({speed: 2, fovy: 2});
   }
   else {
-    firstPersonCamera.setState({speed: 1.2});
+    firstPersonCamera.setState({speed: 1.2, fovy : 1});
   }
   if(keyIsDown(32) && playerOnGround) {
     playerOnGround = !playerOnGround;
@@ -39,7 +40,7 @@ function keyPressed() {
   if(keyCode === 49) {
     gameMode = 1;
   }
-  else if(keyCode === 48) {
+  if(keyCode === 48) {
     gameMode = 0;
   }
   if(keyCode === 72) {
@@ -75,27 +76,31 @@ class Player extends RoverCam {
       // extend the keyboard controls by adding a hop behavior
       if (this.grounded && keyIsDown(32)){ // space
         this.grounded = false;
+        upWithSpace = true;
         this.velocity.y = -sideLength / 2;
         this.position.y -= 0.2;
       }
       else if(!this.grounded) {
+        if(keyIsDown(16)) {
+          this.position.add(createVector(0, this.sensitivity, 0));
+        }
         this.velocity.add(this.gravity);
         this.position.add(this.velocity);
-        
       }
       if(cameraPosition.y + playerHeight >= topCoordinate()) {
         this.grounded = true;
+        upWithSpace = false;
         firstPersonCamera.position.y = topCoordinate() - playerHeight;
       }
       else if(cameraPosition.y + playerHeight <= topCoordinate()) {
         this.grouded = false;
       }
     }
-    else if(gameMode === 0) {
-      if(keyIsDown(32)) {
-        this.moveZ(this.speed); //e 
-      }
-    }
+    // else if(gameMode === 0) {
+    //   if(keyIsDown(32)) {
+    //     this.moveZ(this.speed); //e 
+    //   }
+    // }
   }
   // collide(this,block) {
       

@@ -29,7 +29,7 @@ function setup() {
       z:0
     };
   }
-  frameRate(40);
+  frameRate(60);
   topLeftWidth = -width / 4;
   topLeftHeight = -height / 4.3;
   curAverage = frameRate();
@@ -37,18 +37,20 @@ function setup() {
 
 function draw() {
   background(200);
-  console.time("drawTime");
+  // console.time("drawTime");
   drawWorld();
-  console.timeEnd("drawTime");
-  console.time("gravity");
-  gravity();
-  console.timeEnd("gravity");
-  topHeight = topCoordinate() - sideLength * 2;
-  console.time("GUI");
+  // console.timeEnd("drawTime");
+  // console.time("gravity");
+  if(!toggledH) {
+    gravity();
+    // console.timeEnd("gravity");
+    topHeight = topCoordinate() - sideLength * 2;
+  }
+  // console.time("GUI");
   push(); // This affects framerate
   twoDShapes();
   pop();
-  console.timeEnd("GUI");
+  // console.timeEnd("GUI");
   colliding(firstPersonCamera);
 }
 
