@@ -55,12 +55,7 @@ function addChunk(worldHeight) {
     newChunk.push([]);
     for(let z = 0; z < chunkSize; z++) {
       newChunk[x].push([]);
-<<<<<<< Updated upstream
-      for(let y = 0; y < 10; y++) {
-=======
-<<<<<<< HEAD
       for(let y = 0; y < worldHeight[x][z]; y++) {
->>>>>>> Stashed changes
         let block = new Block(x,z,-y);
         newChunk[x][z].push(block);
       }
@@ -76,15 +71,14 @@ function addFlatChunk() {
     for(let z = 0; z < chunkSize; z++) {
       newChunk[x].push([]);
       for(let y = 0; y < 3; y++) {
-=======
-      for(let y = 0; y < 10; y++) {
->>>>>>> 4d6ad6d4dcbcacb9c7470052c6620bb325140a3b
-        let block = new Block(x,z,-y);
-        newChunk[x][z].push(block);
+        for(let y = 0; y < 10; y++) {
+          let block = new Block(x,z,-y);
+          newChunk[x][z].push(block);
+        }
       }
     }
+    return newChunk;
   }
-  return newChunk;
 }
 // draw world with restriction for efficiency
 function drawWorld() {
