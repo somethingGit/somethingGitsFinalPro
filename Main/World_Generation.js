@@ -70,15 +70,13 @@ function addFlatChunk() {
     newChunk.push([]);
     for(let z = 0; z < chunkSize; z++) {
       newChunk[x].push([]);
-      for(let y = 0; y < 3; y++) {
-        for(let y = 0; y < 10; y++) {
-          let block = new Block(x,z,-y);
-          newChunk[x][z].push(block);
-        }
+      for(let y = 0; y < 10; y++) {
+        let block = new Block(x,z,-y);
+        newChunk[x][z].push(block);
       }
     }
-    return newChunk;
   }
+  return newChunk;
 }
 // draw world with restriction for efficiency
 function drawWorld() {
@@ -102,7 +100,9 @@ function drawWorld() {
         }
         if (count<6) {
           chunkArray[i][j][k].display(i,j,k);
+          collide(firstPersonCamera,chunkArray[i][j][k]);
         }
+        
       }
     }
   }
@@ -120,13 +120,13 @@ function generateHeights(howMany) {
 }
 
 // get Jason the top block or the block we currently stand
-function blockToCamera() {
+function blockToCamera() { //take the block we currently on
   let xBlock = 0;
   let yBlock = 0;
   let zBlock = 0;
-  xBlock = Math.floor(cameraPosition.x/sideLength);
-  yBlock = Math.floor(cameraPosition.z/sideLength); 
-  zBlock = Math.floor(cameraPosition.y/sideLength);   
+  xBlock = Math.floor(firstPersonCamera.position.x/sideLength);
+  yBlock = Math.floor(firstPersonCamera.position.z/sideLength); 
+  zBlock = Math.floor(firstPersonCamera.position.y/sideLength);   
   return [xBlock,yBlock,zBlock];
 }
 
@@ -158,8 +158,8 @@ function collisionCheck3dRectangleX(player,b) {
 function collisionCheck3dRectangleY(player,b) {
   let aYmax,aYmin;
   let bYmax,bYmin;
-  aYmax = player.position.y + sideLength*0.375;
-  aYmin = player.position.y - sideLength*0.375;
+  aYmax = player.position.z + sideLength*0.375;
+  aYmin = player.position.z - sideLength*0.375;
   bYmax = b.y*sideLength;
   bYmin = (b.y-1)*sideLength;
   if (aYmin < bYmax && aYmax > bYmin) { //check the collide on Y
@@ -170,8 +170,8 @@ function collisionCheck3dRectangleY(player,b) {
 function collisionCheck3dRectangleZ(player,b) {
   let aZmax,aZmin;
   let bZmax,bZmin;
-  aZmax = player.position.z + sideLength*1.5;
-  aZmin = player.position.z - sideLength*0.5;
+  aZmax = player.position.y - sideLength*1.5;
+  aZmin = player.position.y + sideLength*0.5;
   bZmax = b.z*sideLength;
   bZmin = (b.z-1)*sideLength;
   if (aZmin < bZmax && aZmax > bZmin) { // check the collide on Z
@@ -181,7 +181,7 @@ function collisionCheck3dRectangleZ(player,b) {
 
 function collide(player,block) {
   if (collisionCheck3dRectangleX(player,block)) {
-    player.position.x = block.x - sideLength*0.376;
+    player.position.x = block.x*sideLength + sideLength*0.375;
     player.setState({speed:0});
   }
   else {
@@ -189,7 +189,7 @@ function collide(player,block) {
   }
 
   if (collisionCheck3dRectangleY(player,block)) {
-    player.position.y = block.y - sideLength*0.376;
+    player.position.z = block.y*sideLength + sideLength*0.375;
     player.setState({speed:0});
   }
   else {
@@ -197,25 +197,11 @@ function collide(player,block) {
   }
 
   if (collisionCheck3dRectangleZ(player,block)) {
-    player.position.z = block.z - sideLength;
+    player.position.y = block.z*sideLength - sideLength*1;
     player.setState({speed:0});
   }
   else {
     player.setState({speed:1.2});
-  }
-}
-
-function colliding(player) {
-  let currentBlock = blockToCamera();
-  for (let a =-1; a++; a<=1) {
-    if (a!== 0) {
-      collide(player,chunkArray[currentBlock[0]+a][currentBlock[1]][currentBlock[2]]);
-      collide(player,chunkArray[currentBlock[0]+a][currentBlock[1]+a][currentBlock[2]]);
-      collide(player,chunkArray[currentBlock[0]+a][currentBlock[1]+a][currentBlock[2]+a]);
-      collide(player,chunkArray[currentBlock[0]][currentBlock[1]+a][currentBlock[2]]);
-      collide(player,chunkArray[currentBlock[0]][currentBlock[1]+a][currentBlock[2]+a]);
-      collide(player,chunkArray[currentBlock[0]][currentBlock[1]][currentBlock[2]+a]);
-    }
   }
 }
 
