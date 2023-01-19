@@ -37,12 +37,18 @@ function setup() {
 
 function draw() {
   background(200);
+  console.time("drawTime");
   drawWorld();
+  console.timeEnd("drawTime");
+  console.time("gravity");
   gravity();
+  console.timeEnd("gravity");
   topHeight = topCoordinate() - sideLength * 2;
+  console.time("GUI");
   push(); // This affects framerate
   twoDShapes();
   pop();
+  console.timeEnd("GUI");
   colliding(firstPersonCamera);
 }
 

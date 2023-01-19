@@ -4,7 +4,7 @@ let grassImg;
 
 class Block {
   constructor(x,y,z) {
-    this.blockType = "green";
+    this.blockType = "red";
     this.x = x;
     this.y = y;
     this.z = z;
@@ -70,13 +70,13 @@ function drawWorld() {
     for(let j = 0; j < chunkArray[i].length; j++) {
       for(let k = 0; k < chunkArray[i][j].length; k++) {
         count = 0;
-        for (let a = -1; a<=1;a++) {
+        for (let a = -1; a <= 1; a++) {
           if (a!==0) {
-            if (i+a >=0 && i+a <= chunkArray.length-1 && chunkArray[i+a][j][k]) {
-              count+=1;
+            if (i + a >= 0 && i + a <= chunkArray.length - 1 && chunkArray[i + a][j][k]) {
+              count += 1;
             }
-            if (j+a >=0 && j+a <= chunkArray[i].length-1 && chunkArray[i][j+a][k] ) {
-              count+=1;
+            if (j + a >= 0 && j + a <= chunkArray[i].length - 1 && chunkArray[i][j + a][k] ) {
+              count += 1;
             }
             if (k+a >=0 && k+a <= chunkArray[i][j].length-1 && chunkArray[i][j][k+a] ) {
               count+=1;
