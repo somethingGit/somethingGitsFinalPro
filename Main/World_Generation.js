@@ -47,6 +47,7 @@ function generateWorld() {
   }
   chunkArray = addChunk(chunkHeight);
 }
+
 //make a 3D array of block
 function addChunk(worldHeight) {
   let newChunk = [];
@@ -54,7 +55,12 @@ function addChunk(worldHeight) {
     newChunk.push([]);
     for(let z = 0; z < chunkSize; z++) {
       newChunk[x].push([]);
+<<<<<<< Updated upstream
       for(let y = 0; y < 10; y++) {
+=======
+<<<<<<< HEAD
+      for(let y = 0; y < worldHeight[x][z]; y++) {
+>>>>>>> Stashed changes
         let block = new Block(x,z,-y);
         newChunk[x][z].push(block);
       }
@@ -63,6 +69,23 @@ function addChunk(worldHeight) {
   return newChunk; 
 } 
 
+function addFlatChunk() {
+  let newChunk = [];
+  for(let x = 0; x < chunkSize; x++) {
+    newChunk.push([]);
+    for(let z = 0; z < chunkSize; z++) {
+      newChunk[x].push([]);
+      for(let y = 0; y < 3; y++) {
+=======
+      for(let y = 0; y < 10; y++) {
+>>>>>>> 4d6ad6d4dcbcacb9c7470052c6620bb325140a3b
+        let block = new Block(x,z,-y);
+        newChunk[x][z].push(block);
+      }
+    }
+  }
+  return newChunk;
+}
 // draw world with restriction for efficiency
 function drawWorld() {
   let count;
@@ -107,9 +130,9 @@ function blockToCamera() {
   let xBlock = 0;
   let yBlock = 0;
   let zBlock = 0;
-  xBlock = Math.ceil(cameraPosition.x/sideLength);
-  yBlock = Math.ceil(cameraPosition.z/sideLength); 
-  zBlock = Math.ceil(cameraPosition.y/sideLength);   
+  xBlock = Math.floor(cameraPosition.x/sideLength);
+  yBlock = Math.floor(cameraPosition.z/sideLength); 
+  zBlock = Math.floor(cameraPosition.y/sideLength);   
   return [xBlock,yBlock,zBlock];
 }
 
@@ -170,6 +193,22 @@ function collide(player,block) {
   else {
     player.setState({speed:1.2});
   }
+
+  if (collisionCheck3dRectangleY(player,block)) {
+    player.position.y = block.y - sideLength*0.376;
+    player.setState({speed:0});
+  }
+  else {
+    player.setState({speed:1.2});
+  }
+
+  if (collisionCheck3dRectangleZ(player,block)) {
+    player.position.z = block.z - sideLength;
+    player.setState({speed:0});
+  }
+  else {
+    player.setState({speed:1.2});
+  }
 }
 
 function colliding(player) {
@@ -183,5 +222,28 @@ function colliding(player) {
       collide(player,chunkArray[currentBlock[0]][currentBlock[1]+a][currentBlock[2]+a]);
       collide(player,chunkArray[currentBlock[0]][currentBlock[1]][currentBlock[2]+a]);
     }
+  }
+}
+
+// function colliding(player) {
+//   let currentBlock = blockToCamera();
+//   for (let a =-1; a++; a<=1) {
+//     if (a!== 0) {
+//       collide(player,chunkArray[currentBlock[0]+a][currentBlock[1]][currentBlock[2]]);
+//       collide(player,chunkArray[currentBlock[0]+a][currentBlock[1]+a][currentBlock[2]]);
+//       collide(player,chunkArray[currentBlock[0]+a][currentBlock[1]+a][currentBlock[2]+a]);
+//       collide(player,chunkArray[currentBlock[0]][currentBlock[1]+a][currentBlock[2]]);
+//       collide(player,chunkArray[currentBlock[0]][currentBlock[1]+a][currentBlock[2]+a]);
+//       collide(player,chunkArray[currentBlock[0]][currentBlock[1]][currentBlock[2]+a]);
+//     }
+//   }
+// }
+
+function keyPressed() {
+  if (key === "r") {
+    chunkArray = addFlatChunk();
+  }
+  if (key === "t") {
+    generateWorld();
   }
 }
