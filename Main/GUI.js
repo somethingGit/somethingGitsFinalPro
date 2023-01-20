@@ -2,7 +2,7 @@ let curAverage;
 let lowestFPS = 100;
 let topLeftWidth;
 let topLeftHeight;
-let toggledH = false;
+let toggledH = true;
 
 function twoDShapes() {
   // Heads Up Display extension by jWilliam at https://editor.p5js.org/jwdunn1/sketches/iI-2XX0Hw
@@ -24,4 +24,8 @@ function twoDShapes() {
   fill(color(128, 128, 128, 200));
   rect(-rectWidth, -rectHeight, rectWidth, rectHeight * 1.5);
   rect(0 - rectHeight, 0 - rectWidth, rectHeight * 1.5, rectWidth);
+  if(toggledH) {
+    text("a/d : left/right", topLeftWidth, topLeftHeight + 50);
+    text("w/s : forward/backward", topLeftWidth, topLeftHeight + 70);
+  }
 }

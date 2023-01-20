@@ -9,6 +9,7 @@ let fs = false;
 let shouldFullScreen = true;
 let playerLength;
 let playerHeight;
+let lastTallest;
 
 function setCam() {
   playerHeight = sideLength * 1.9;
@@ -90,17 +91,17 @@ class Player extends RoverCam {
       if(cameraPosition.y + playerHeight >= topCoordinate()) {
         this.grounded = true;
         upWithSpace = false;
-        firstPersonCamera.position.y = topCoordinate() - playerHeight;
+        //firstPersonCamera.position.y = topCoordinate() - playerHeight;
       }
       else if(cameraPosition.y + playerHeight <= topCoordinate()) {
         this.grouded = false;
       }
     }
-    // else if(gameMode === 0) {
-    //   if(keyIsDown(32)) {
-    //     this.moveZ(this.speed); //e 
-    //   }
-    // }
+    else if(gameMode === 0) {
+      if(keyIsDown(32)) {
+        this.moveZ(this.speed); //e 
+      }
+    }
   }
   // collide(this,block) {
       

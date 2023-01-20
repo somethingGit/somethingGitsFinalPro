@@ -41,17 +41,14 @@ function draw() {
   drawWorld();
   // console.timeEnd("drawTime");
   // console.time("gravity");
-  if(!toggledH) {
-    gravity();
-    // console.timeEnd("gravity");
-    topHeight = topCoordinate() - sideLength * 2;
-  }
+  gravity();
+  // console.timeEnd("gravity");
+  topHeight = topCoordinate() - sideLength * 2;
   // console.time("GUI");
   push(); // This affects framerate
   twoDShapes();
   pop();
   // console.timeEnd("GUI");
-  colliding(firstPersonCamera);
 }
 
 function windowResized() {
