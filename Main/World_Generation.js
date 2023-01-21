@@ -1,8 +1,14 @@
+// Global variables
 let sideLength = 50;
 let topHeight = 0;
 let grassImg;
+const chunkSize = 16;
+let chunkArray = [];
+let inventory;
 
+// Block class
 class Block {
+  // Block variables
   constructor(x,y,z) {
     this.blockType = "red";
     this.x = x;
@@ -10,6 +16,7 @@ class Block {
     this.z = z;
     this.boxLength = sideLength;
   }
+  // Displays block
   display(i,j,k) {
     fill(this.blockType);
     // translate the block back and forth to creates the chunk
@@ -19,16 +26,15 @@ class Block {
   }
 }
 
+// Adds block type. 
 class Grassblock extends Block {
   constructor (blockType) {
     super(blockType, "green");
   }
 }
 
-const chunkSize = 16;
-let chunkArray = [];
-let inventory;
 
+// Creates Inventory. 
 function createInventory() {
   let emptyArray = [];
   for (let y = 0;y<4;y++) {
@@ -40,6 +46,7 @@ function createInventory() {
   return emptyArray;
 }
 
+// This generates the world. 
 function generateWorld() {
   let chunkHeight = [];
   for (let i =0;i<16;i++) {
@@ -64,6 +71,7 @@ function addChunk(worldHeight) {
   return newChunk; 
 } 
 
+// This is a flat chunk builder. 
 function addFlatChunk() {
   let newChunk = [];
   for(let x = 0; x < chunkSize; x++) {
@@ -78,6 +86,7 @@ function addFlatChunk() {
   }
   return newChunk;
 }
+
 // draw world with restriction for efficiency
 function drawWorld() {
   let count;
@@ -108,6 +117,7 @@ function drawWorld() {
   }
 }
 
+// Gets height of point in world. 
 function generateHeights(howMany) {
   let tempArray = [];
   let start = random(5,10000);
@@ -130,6 +140,7 @@ function blockToCamera() { //take the block we currently on
   return [xBlock,yBlock,zBlock];
 }
 
+// Gets the highest point based off camera position. 
 function topCoordinate() {
   let currentBlock = blockToCamera();
   let x = currentBlock[0];
@@ -144,6 +155,7 @@ function topCoordinate() {
   return result;
 }
 
+// Checks collision on x axis. 
 function collisionCheck3dRectangleX(player,b) {
   let bXmax,bXmin;
   let aXmax = player.position.x + sideLength*0.375;
@@ -155,6 +167,7 @@ function collisionCheck3dRectangleX(player,b) {
   }
 }
 
+// Checks collision on y axis. 
 function collisionCheck3dRectangleY(player,b) {
   let aYmax,aYmin;
   let bYmax,bYmin;
@@ -167,6 +180,7 @@ function collisionCheck3dRectangleY(player,b) {
   }
 }
 
+// Checks collision on z axis. 
 function collisionCheck3dRectangleZ(player,b) {
   let aZmax,aZmin;
   let bZmax,bZmin;
@@ -179,6 +193,7 @@ function collisionCheck3dRectangleZ(player,b) {
   }
 }
 
+// Handles player collisions. 
 function collide(player,block) {
   if (collisionCheck3dRectangleX(player,block)) {
     player.position.x = block.x*sideLength + sideLength*0.375;
@@ -219,6 +234,7 @@ function collide(player,block) {
 //   }
 // }
 
+// Checks for certain key presses. 
 function keyPressed() {
   if (key === "r") {
     chunkArray = addFlatChunk();

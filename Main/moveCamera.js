@@ -1,5 +1,4 @@
-/* eslint-disable brace-style */
-// /* eslint-disable curly */
+// Global variables for camera. 
 let firstPersonCamera;
 let mouseSensitivity = 0.002;
 let playerOnGround = false;
@@ -11,6 +10,7 @@ let playerLength;
 let playerHeight;
 let lastTallest;
 
+// Sets up camera and its states. 
 function setCam() {
   playerHeight = sideLength * 1.9;
   firstPersonCamera = new Player();
@@ -23,36 +23,44 @@ function setCam() {
   });
 }
 
+// Handles keypressed. 
 function keyPressed() {
+  // Fullscreens window
   requestPointerLock();
   if(shouldFullScreen && !fullscreen()) {
     fullscreen(!fs);
   }
+  // Sets up shift key
   if(keyIsDown(16)) {
     firstPersonCamera.setState({speed: 2, fovy: 2});
   }
   else {
     firstPersonCamera.setState({speed: 1.2, fovy : 1});
   }
-  if(keyIsDown(32) && playerOnGround) {
-    playerOnGround = !playerOnGround;
-    delta = -5; 
-  }
+  // Sets up jumping. 
+  // if(keyIsDown(32) && playerOnGround && gameMode === 1) {
+  //   playerOnGround = !playerOnGround;
+  //   delta = -5; 
+  // }
+  // Gamemode selector
   if(keyCode === 49) {
     gameMode = 1;
   }
   if(keyCode === 48) {
     gameMode = 0;
   }
+  // Toggles help menu
   if(keyCode === 72) {
     toggledH = !toggledH;
   }
 }
 
+// Calles the extended RoverCam function that updates to allow gravity
 function gravity() {
   firstPersonCamera.update();
 }
 
+// Allows mouse press to full screen and pointer lock.
 function mousePressed() {
   if(shouldFullScreen && !fullscreen()) {
     fullscreen(!fs);
@@ -62,8 +70,10 @@ function mousePressed() {
 
 //Code provided by jwdunn1 or James Dunn who also made RoverCam. Can be found at
 //https://github.com/freshfork/p5.RoverCam
+// This function extends RoverCam
 class Player extends RoverCam {
   constructor(){
+    // Adds more variables to RoverCam
     super();
     this.speed = 0.04;
     this.dimensions = createVector(1, 3, 1);
@@ -72,10 +82,13 @@ class Player extends RoverCam {
     this.grounded = false;
   }
   
+  // Update function extends the movement possible in RoverCam
   update(){
     if(gameMode === 1) {
       // extend the keyboard controls by adding a hop behavior
       if (this.grounded && keyIsDown(32)){ // space
+        playerOnGround = !playerOnGround;
+        delta = -5; 
         this.grounded = false;
         upWithSpace = true;
         this.velocity.y = -sideLength / 2;
@@ -88,6 +101,7 @@ class Player extends RoverCam {
         this.velocity.add(this.gravity);
         this.position.add(this.velocity);
       }
+      // Checks if player is back on the ground. 
       if(cameraPosition.y + playerHeight >= topCoordinate()) {
         this.grounded = true;
         upWithSpace = false;
@@ -103,7 +117,4 @@ class Player extends RoverCam {
       }
     }
   }
-  // collide(this,block) {
-      
-  // }
 }
