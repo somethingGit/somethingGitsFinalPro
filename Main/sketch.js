@@ -11,7 +11,6 @@ p5.disableFriendlyErrors = true; // disables errors and increases framerate
 // Preloads images, fonts, and world. Also loads inventory. 
 function preload() {
   grassImg = loadImage("Assets/Grass_01.png");
-  inventory = createInventory();
   fontOne = loadFont("Assets/hussar-bold-web-edition-font/HussarBoldWebEdition-xq5O.otf");
   noiseSeed(10);
   generateWorld();
@@ -31,6 +30,10 @@ function setup() {
     };
   }
   frameRate(60);
+  squareLength = width / 100;
+  for(let i = 0; i < 50; i++) {
+    inventoryArray.push(new Inventory());
+  }
   topLeftWidth = -width / 4;
   topLeftHeight = -height / 4.3;
   curAverage = frameRate();
@@ -59,4 +62,5 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   topLeftWidth = -width / 4;
   topLeftHeight = -height / 4.3;
+  squareLength = width / 100;
 }

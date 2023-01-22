@@ -43,15 +43,18 @@ function keyPressed() {
   //   delta = -5; 
   // }
   // Gamemode selector
-  if(keyCode === 49) {
+  if(keyIsDown(49)) {
     gameMode = 1;
   }
-  if(keyCode === 48) {
+  if(keyIsDown(48)) {
     gameMode = 0;
   }
   // Toggles help menu
-  if(keyCode === 72) {
+  if(keyIsDown(72)) {
     toggledH = !toggledH;
+  }
+  if(keyIsDown(69)) {
+    toggleInventory = !toggleInventory;
   }
 }
 
@@ -105,7 +108,7 @@ class Player extends RoverCam {
       if(cameraPosition.y + playerHeight >= topCoordinate()) {
         this.grounded = true;
         upWithSpace = false;
-        //firstPersonCamera.position.y = topCoordinate() - playerHeight;
+        firstPersonCamera.position.y = topCoordinate() - playerHeight;
       }
       else if(cameraPosition.y + playerHeight <= topCoordinate()) {
         this.grouded = false;

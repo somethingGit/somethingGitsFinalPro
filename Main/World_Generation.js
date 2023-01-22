@@ -4,7 +4,6 @@ let topHeight = 0;
 let grassImg;
 const chunkSize = 16;
 let chunkArray = [];
-let inventory;
 
 // Block class
 class Block {
@@ -31,19 +30,6 @@ class Grassblock extends Block {
   constructor (blockType) {
     super(blockType, "green");
   }
-}
-
-
-// Creates Inventory. 
-function createInventory() {
-  let emptyArray = [];
-  for (let y = 0;y<4;y++) {
-    emptyArray.push([]);
-    for (let x = 0;x<9;x++) {
-      emptyArray[y].push([]);
-    }
-  }
-  return emptyArray;
 }
 
 // This generates the world. 
@@ -109,7 +95,7 @@ function drawWorld() {
         }
         if (count<6) {
           chunkArray[i][j][k].display(i,j,k);
-          collide(firstPersonCamera,chunkArray[i][j][k]);
+          //collide(firstPersonCamera,chunkArray[i][j][k]);
         }
         
       }
