@@ -219,13 +219,3 @@ function collide(player,block) {
 //     }
 //   }
 // }
-
-// Checks for certain key presses. 
-function keyPressed() {
-  if (key === "r") {
-    chunkArray = addFlatChunk();
-  }
-  if (key === "t") {
-    generateWorld();
-  }
-}
