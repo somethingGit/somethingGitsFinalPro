@@ -36,7 +36,7 @@ function twoDShapes() {
   frameRateCounter();
   arrows();
   helpMenu();
-  displayInventory();
+  //displayInventory();
 }
 
 // Sets up a secondary camera. 
