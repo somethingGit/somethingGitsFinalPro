@@ -4,20 +4,21 @@ I am planning on making a Minecraft like game.
 
 ## Needs to have list
 
-- 3d Objects
-- Ability to move with keys WASD
-- Pan camera with mouse
-- Use of WEBGL
+- 3d Objects yes
+- Ability to move with keys WASD yes
+- Pan camera with mouse yes
+- Gravity and Collision (half fail (?))
+- Use of WEBGL yes 
 
 ### Overworld map
-- 3d noise terrain
-- character moving around with WASD, camera with mouse-pointer, fov change
-- breaks and place block
+- 3d noise terrain yes
+- character moving around with WASD, camera with mouse-pointer, fov change yes
+- breaks and place block (have not attempt)
 
 ### HUD/ GUI
-- Inventory
-- Arrow/direction
-- Images/sounds
+- Inventory yes
+- Arrow/direction yes
+- Images/sounds failed (super laggy)
 
 
 ## Nice to have list
