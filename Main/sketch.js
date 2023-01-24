@@ -30,7 +30,7 @@ function setup() {
     };
   }
   frameRate(60);
-  squareLength = width / 100;
+  squareLength = width / 50;
   for(let i = 0; i < 50; i++) {
     inventoryArray.push(new Inventory());
   }
@@ -62,5 +62,5 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   topLeftWidth = -width / 4;
   topLeftHeight = -height / 4.3;
-  squareLength = width / 100;
+  squareLength = width / 50;
 }

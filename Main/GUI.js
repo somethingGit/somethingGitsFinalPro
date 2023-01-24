@@ -19,14 +19,13 @@ class Inventory {
   }
   
   display(i) {
-    stroke(220, 220, 220);
-    strokeWeight(100);
-    fill(255);
+    stroke(color(255, 0, 0));
+    strokeWeight(1);
+    fill(color(0, 255, 0));
     if(this.type === " ") {
-      rect((topLeftWidth + width / 3 + i % 10 * squareLength) / 10, (topLeftHeight + height + 50 + Math.floor(i / 5) * squareLength) / 10, squareLength, squareLength);
+      rect((topLeftWidth + width / 25 + i % 10 * squareLength) / 10, (topLeftHeight + Math.floor(i / 10) * squareLength) / 10, squareLength, squareLength);
     }
   }
-  
 }
 
 // Displays 2d shapes in 3d world. 
@@ -37,7 +36,7 @@ function twoDShapes() {
   frameRateCounter();
   arrows();
   helpMenu();
-  displayInventory();
+  //displayInventory();
 }
 
 // Sets up a secondary camera. 
@@ -76,11 +75,12 @@ function helpMenu() {
     text("w/s : forward/backward", topLeftWidth, topLeftHeight + 70);
   }
 }
-
+/*
 function displayInventory() {
-  if(toggleInventory) {
+  if(toggleInventory && gameMode === 1) {
     for(let i = 0; i < inventoryArray.length; i++) {
       inventoryArray[i].display(i);
     }
   }
 }
+*/

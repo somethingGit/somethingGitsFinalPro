@@ -52,9 +52,18 @@ function keyPressed() {
   // Toggles help menu
   if(keyIsDown(72)) {
     toggledH = !toggledH;
+    console.log(toggledH);
   }
   if(keyIsDown(69)) {
     toggleInventory = !toggleInventory;
+  }
+  
+  // Checks for certain key presses. 
+  if (key === "r") {
+    chunkArray = addFlatChunk();
+  }
+  if (key === "t") {
+    generateWorld();
   }
 }
 
