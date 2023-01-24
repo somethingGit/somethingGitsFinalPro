@@ -19,6 +19,7 @@ class Block {
   display(i,j,k) {
     fill(this.blockType);
     // translate the block back and forth to creates the chunk
+    texture(grassImg);
     translate(chunkArray[i][j][k].x*sideLength,chunkArray[i][j][k].z*sideLength,chunkArray[i][j][k].y*sideLength);
     box(sideLength,sideLength,sideLength);
     translate(chunkArray[i][j][k].x*sideLength*-1,chunkArray[i][j][k].z*sideLength*-1,chunkArray[i][j][k].y*sideLength*-1);
