@@ -95,7 +95,7 @@ function drawWorld() {
         }
         if (count<6) {
           chunkArray[i][j][k].display(i,j,k);
-          //collide(firstPersonCamera,chunkArray[i][j][k]);
+          // collide(firstPersonCamera,chunkArray[i][j][k]);
         }
         
       }
@@ -146,9 +146,9 @@ function collisionCheck3dRectangleX(player,b) {
   let bXmax,bXmin;
   let aXmax = player.position.x + sideLength*0.375;
   let aXmin = player.position.x - sideLength*0.375;
-  bXmax = b.x*sideLength;
-  bXmin = (b.x-1)*sideLength;
-  if (aXmin < bXmax && aXmax > bXmin) { //check the collide on X
+  bXmax = (b.x-1)*sideLength;
+  bXmin = (b.x-2)*sideLength;
+  if (aXmin <= bXmax && aXmax >= bXmin) { //check the collide on X
     return true;
   }
 }
@@ -159,9 +159,9 @@ function collisionCheck3dRectangleY(player,b) {
   let bYmax,bYmin;
   aYmax = player.position.z + sideLength*0.375;
   aYmin = player.position.z - sideLength*0.375;
-  bYmax = b.y*sideLength;
-  bYmin = (b.y-1)*sideLength;
-  if (aYmin < bYmax && aYmax > bYmin) { //check the collide on Y
+  bYmax = (b.y-1)*sideLength;
+  bYmin = (b.y-2)*sideLength;
+  if (aYmin <= bYmax && aYmax >= bYmin) { //check the collide on Y
     return true;
   }
 }
@@ -172,38 +172,40 @@ function collisionCheck3dRectangleZ(player,b) {
   let bZmax,bZmin;
   aZmax = player.position.y - sideLength*1.5;
   aZmin = player.position.y + sideLength*0.5;
-  bZmax = b.z*sideLength;
-  bZmin = (b.z-1)*sideLength;
-  if (aZmin < bZmax && aZmax > bZmin) { // check the collide on Z
+  bZmax = (b.z-1)*sideLength;
+  bZmin = (b.z-2)*sideLength;
+  if (aZmin <= bZmax && aZmax >= bZmin) { // check the collide on Z
     return true;
   }
 }
 
 // Handles player collisions. 
 function collide(player,block) {
-  if (collisionCheck3dRectangleX(player,block)) {
-    player.position.x = block.x*sideLength + sideLength*0.375;
+  if (collisionCheck3dRectangleX(player,block) && collisionCheck3dRectangleY(player,block) && collisionCheck3dRectangleZ(player,block)) {
+    player.position.x = (block.x - 1) * sideLength + sideLength*0.376;
+    player.position.z = (block.y - 1) * sideLength + sideLength*0.376;
+    player.position.y = (block.z + 1) * sideLength + sideLength*0.75;
     player.setState({speed:0});
   }
   else {
     player.setState({speed:1.2});
   }
 
-  if (collisionCheck3dRectangleY(player,block)) {
-    player.position.z = block.y*sideLength + sideLength*0.375;
-    player.setState({speed:0});
-  }
-  else {
-    player.setState({speed:1.2});
-  }
+  // if (collisionCheck3dRectangleY(player,block)) {
+  //   player.position.z = (block.y+1) * sideLength + sideLength*0.376;
+  //   player.setState({speed:0});
+  // }
+  // else {
+  //   player.setState({speed:1.2});
+  // }
 
-  if (collisionCheck3dRectangleZ(player,block)) {
-    player.position.y = block.z*sideLength - sideLength*1;
-    player.setState({speed:0});
-  }
-  else {
-    player.setState({speed:1.2});
-  }
+  // if (collisionCheck3dRectangleZ(player,block)) {
+  //   player.position.y = (block.z+1)*sideLength + sideLength*0.75;
+  //   player.setState({speed:0});
+  // }
+  // else {
+  //   player.setState({speed:1.2});
+  // }
 }
 
 // function colliding(player) {
