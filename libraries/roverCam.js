@@ -76,15 +76,15 @@ class RoverCam {
         this.pitch(p.movedY * this.sensitivity / 10); // mouse up/down
         if ((p.keyIsDown(k.my1[0]) || p.keyIsDown(k.my1[1]))) {
           this.moveY(this.speed); // a
-          if(gameMode === 1 && !upWithSpace) {
+          /*if(gameMode === 1 && !upWithSpace) {
             firstPersonCamera.position.y = topCoordinate() - sideLength * 2;
-          }
+          }*/
         }
         if (p.keyIsDown(k.my2[0]) || p.keyIsDown(k.my2[1])) {
           this.moveY(-this.speed); // d
-          if(gameMode === 1 && !upWithSpace) {
+          /*if(gameMode === 1 && !upWithSpace) {
             firstPersonCamera.position.y = topCoordinate() - sideLength * 2;
-          }
+          }*/
         }
         //if (p.keyIsDown(k.e1[0]) || p.keyIsDown(k.e1[1])) this.elevate(-this.speed); // r
         //if (p.keyIsDown(k.e2[0]) || p.keyIsDown(k.e2[1])) this.elevate(this.speed); // f

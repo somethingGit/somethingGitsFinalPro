@@ -3,8 +3,8 @@ let curAverage;
 let lowestFPS = 100;
 let topLeftWidth;
 let topLeftHeight;
-let toggledH = true;
-let toggleInventory = true; 
+let toggledH = false;
+let toggleInventory = false; 
 let inventoryArray = [];
 let squareLength;
 
@@ -23,7 +23,7 @@ class Inventory {
     strokeWeight(1);
     fill(color(0, 255, 0));
     if(this.type === " ") {
-      rect((topLeftWidth + width / 25 + i % 10 * squareLength) / 10, (topLeftHeight + Math.floor(i / 10) * squareLength) / 10, squareLength, squareLength);
+      rect(topLeftWidth + (i % 10 * squareLength + 5), (topLeftHeight + Math.floor(i / 10) * squareLength) / 10, squareLength, squareLength);
     }
   }
 }
@@ -36,7 +36,7 @@ function twoDShapes() {
   frameRateCounter();
   arrows();
   helpMenu();
-  //displayInventory();
+  displayInventory();
 }
 
 // Sets up a secondary camera. 
@@ -75,7 +75,7 @@ function helpMenu() {
     text("w/s : forward/backward", topLeftWidth, topLeftHeight + 70);
   }
 }
-/*
+
 function displayInventory() {
   if(toggleInventory && gameMode === 1) {
     for(let i = 0; i < inventoryArray.length; i++) {
@@ -83,4 +83,4 @@ function displayInventory() {
     }
   }
 }
-*/
+
